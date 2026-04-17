@@ -2,25 +2,78 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --brand-50: #fff7ed;
+  --brand-100: #ffedd5;
+  --brand-400: #fb923c;
+  --brand-500: #f97316;
+  --brand-600: #ea580c;
+  --brand-700: #c2410c;
+  --accent: #dc2626;
+  --slate-ink: #0f172a;
+  --slate-muted: #475569;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-accent: var(--accent);
+  --color-ink: var(--slate-ink);
+  --color-muted: var(--slate-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero-Gradient – warmer Orange-zu-Rot Verlauf */
+.bg-hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #fdba74 0%,
+    #fb923c 25%,
+    #f97316 55%,
+    #ea580c 80%,
+    #dc2626 100%
+  );
+}
+
+.bg-hero-gradient-soft {
+  background: linear-gradient(
+    135deg,
+    #fff7ed 0%,
+    #ffedd5 50%,
+    #fed7aa 100%
+  );
+}
+
+.text-gradient-brand {
+  background: linear-gradient(90deg, #f97316 0%, #dc2626 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Subtile Background-Decorations */
+.bg-grid-soft {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
