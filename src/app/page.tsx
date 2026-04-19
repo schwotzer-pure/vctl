@@ -18,15 +18,8 @@ export default function HomePage() {
             loop
             muted
             playsInline
+            className="absolute inset-0 h-full w-full object-cover object-center"
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              minWidth: "100%",
-              minHeight: "100%",
-              width: "auto",
-              height: "auto",
-              transform: "translate(-50%, -50%)",
               filter: "grayscale(100%) contrast(1.2)",
               mixBlendMode: "screen",
             }}
