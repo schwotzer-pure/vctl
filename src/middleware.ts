@@ -2,8 +2,8 @@ import { updateSession } from "@/lib/supabase/middleware";
 import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  // Im Dev-Dummy-Modus ist kein Session-Refresh nötig.
   if (process.env.NEXT_PUBLIC_DEV_DUMMY_AUTH === "true") return;
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) return;
   return await updateSession(request);
 }
 
