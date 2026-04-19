@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -12,14 +11,14 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-0 isolate"
           style={{ backgroundColor: "#0a0806" }}
         >
-          {/* Layer A: Foto in Graustufen, blendet als "screen" auf den dunklen Sockel */}
-          <Image
-            src="/hero.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="absolute inset-0 object-cover object-center"
+          {/* Layer A: Video in Graustufen, blendet als "screen" auf den dunklen Sockel */}
+          <video
+            src="/hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover object-center"
             style={{
               filter: "grayscale(100%) contrast(1.2)",
               mixBlendMode: "screen",
@@ -160,7 +159,7 @@ export default function HomePage() {
           <div className="lg:col-span-7 grid gap-5 sm:grid-cols-2">
             <FeatureCard
               title="Geregelte Trainings"
-              desc="Strukturierte Einheiten mit Debi (Haupttrainerin) und René (Co-Trainer)."
+              desc="Strukturierte Einheiten mit Debi (Haupttrainer) und René (Co-Trainer)."
               accent="01"
             />
             <FeatureCard

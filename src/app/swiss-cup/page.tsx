@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Swiss-Cup 2026",
   description:
@@ -44,8 +46,11 @@ const races: Race[] = [
 ];
 
 export default function SwissCupPage() {
-  const today = new Date("2026-04-17");
-  const nextRace = races.find((r) => new Date(r.iso) >= today);
+  const todayISO = new Intl.DateTimeFormat("sv-SE", {
+    timeZone: "Europe/Zurich",
+  }).format(new Date());
+  const upcomingRaces = races.filter((r) => r.iso >= todayISO);
+  const nextRace = upcomingRaces[0] ?? null;
 
   return (
     <>
@@ -58,7 +63,7 @@ export default function SwissCupPage() {
 
       {/* Next Race Highlight */}
       {nextRace && (
-        <section className="mx-auto max-w-7xl px-6 lg:px-10 -mt-14">
+        <section className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 -mt-14">
           <div className="rounded-3xl bg-white p-8 shadow-xl shadow-slate-900/10 ring-1 ring-slate-100 sm:p-10">
             <div className="flex flex-wrap items-center justify-between gap-6">
               <div>
@@ -89,7 +94,7 @@ export default function SwissCupPage() {
         <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">
-              Alle Termine
+              Kommende Termine
             </span>
             <h2 className="mt-2 text-3xl font-black tracking-tight text-ink">
               Kalender 2026
@@ -97,54 +102,49 @@ export default function SwissCupPage() {
           </div>
         </div>
 
-        <ol className="space-y-3">
-          {races.map((r, i) => {
-            const past = new Date(r.iso) < today;
-            return (
-              <li
-                key={r.iso}
-                className={[
-                  "flex flex-wrap items-center gap-6 rounded-2xl bg-white p-6 ring-1 transition",
-                  past
-                    ? "opacity-60 ring-slate-200"
-                    : "ring-slate-200 hover:ring-brand-500 hover:shadow-lg hover:shadow-brand-500/10",
-                ].join(" ")}
-              >
-                <div className="flex items-center gap-5">
-                  <span className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-brand-50 text-brand-600 ring-1 ring-brand-100">
-                    <span className="text-[10px] font-bold uppercase tracking-wider">
-                      {r.day}
+        {upcomingRaces.length > 0 ? (
+          <ol className="space-y-3">
+            {upcomingRaces.map((r) => {
+              const raceNumber = races.indexOf(r) + 1;
+              return (
+                <li
+                  key={r.iso}
+                  className="flex flex-wrap items-center gap-6 rounded-2xl bg-white p-6 ring-1 ring-slate-200 transition hover:ring-brand-500 hover:shadow-lg hover:shadow-brand-500/10"
+                >
+                  <div className="flex items-center gap-5">
+                    <span className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-brand-50 text-brand-600 ring-1 ring-brand-100">
+                      <span className="text-[10px] font-bold uppercase tracking-wider">
+                        {r.day}
+                      </span>
+                      <span className="text-base font-black leading-none">
+                        {r.date.split(" ")[0]}
+                      </span>
+                      <span className="text-[10px] font-semibold">
+                        {r.date.split(" ")[1]}
+                      </span>
                     </span>
-                    <span className="text-base font-black leading-none">
-                      {r.date.split(" ")[0]}
-                    </span>
-                    <span className="text-[10px] font-semibold">
-                      {r.date.split(" ")[1]}
-                    </span>
-                  </span>
-                  <div>
-                    <p className="text-lg font-black text-ink">{r.location}</p>
-                    <p className="text-sm text-muted">
-                      Rennen {i + 1} von {races.length}
-                      {r.note ? ` · ${r.note}` : ""}
-                    </p>
+                    <div>
+                      <p className="text-lg font-black text-ink">{r.location}</p>
+                      <p className="text-sm text-muted">
+                        Rennen {raceNumber} von {races.length}
+                        {r.note ? ` · ${r.note}` : ""}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="ml-auto">
-                  {past ? (
-                    <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Absolviert
-                    </span>
-                  ) : (
+                  <div className="ml-auto">
                     <span className="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-700">
                       Geplant
                     </span>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ol>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        ) : (
+          <p className="text-muted">
+            Die Saison 2026 ist abgeschlossen. Bis nächstes Jahr!
+          </p>
+        )}
       </section>
 
       {/* Anmeldung */}

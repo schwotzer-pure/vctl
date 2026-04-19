@@ -101,12 +101,12 @@ export default function TrainingPage() {
       <PageHeader
         kicker="Training"
         title="Jeden Mittwoch am Trialplatz Luzern."
-        subtitle="Drei Gruppen, zwei Trainer*innen, ein Platz. Wir trainieren fokussiert – mit Platz für Einsteiger*innen und ambitionierte Riders."
+        subtitle="Drei Gruppen, zwei Trainer, ein Platz. Wir trainieren fokussiert – mit Platz für Einsteiger*innen und ambitionierte Riders."
         image={{ src: "/images/training.jpg", alt: "Biker in Aktion auf dem Trail" }}
       />
 
       {/* Gruppen */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-16 -mt-14">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pb-16 -mt-14">
         <div className="grid gap-5 md:grid-cols-3">
           {sessions.map((s) => (
             <div
@@ -123,8 +123,8 @@ export default function TrainingPage() {
         </div>
 
         <div className="mt-6 rounded-2xl bg-slate-50 p-6 ring-1 ring-slate-100 text-sm text-muted">
-          <span className="font-semibold text-ink">Trainer*innen:</span>{" "}
-          Debi (Haupttrainerin) & René (Co-Trainer). Zuteilung je Mittwoch
+          <span className="font-semibold text-ink">Trainer:</span>{" "}
+          Debi (Haupttrainer) & René (Co-Trainer). Zuteilung je Mittwoch
           siehe Trainingsplan.
         </div>
       </section>
@@ -152,7 +152,7 @@ export default function TrainingPage() {
           )}
 
           <p className="mt-8 text-sm text-muted">
-            Der vollständige Trainingsplan mit allen Daten, Trainer*innen und
+            Der vollständige Trainingsplan mit allen Daten, Trainern und
             Spezialanlässen wird auf Clubdesk veröffentlicht und laufend
             aktualisiert.
           </p>

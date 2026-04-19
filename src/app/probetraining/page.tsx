@@ -46,7 +46,7 @@ export default function ProbetrainingPage() {
       />
 
       {/* Ablauf */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-10 -mt-14 pb-16">
+      <section className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 -mt-14 pb-16">
         <div className="grid gap-4 rounded-3xl bg-white p-4 shadow-xl shadow-slate-900/10 ring-1 ring-slate-100 sm:grid-cols-3">
           <Step
             n="01"
