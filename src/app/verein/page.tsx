@@ -179,18 +179,12 @@ export default function VereinPage() {
         </div>
 
         {/* Anmelde-CTA */}
-        <div className="mt-10 flex flex-wrap gap-4">
-          <a
-            href="mailto:praesident@vctl.ch?subject=Mitgliedschaft VCTL"
-            className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-700"
-          >
-            Jetzt Mitglied werden
-          </a>
+        <div className="mt-10">
           <Link
             href="/probetraining"
-            className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-wide text-ink ring-1 ring-slate-300 transition hover:bg-slate-100"
+            className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-700"
           >
-            Erst Probetraining buchen
+            Probetraining buchen
           </Link>
         </div>
       </section>
