@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/page-header";
+import { ProbetrainingForm } from "./ProbetrainingForm";
 
 export const metadata = {
   title: "Probetraining",
@@ -144,78 +145,8 @@ export default function ProbetrainingPage() {
             </div>
           </div>
 
-          {/* Formular (Platzhalter – Anbindung folgt) */}
           <div className="lg:col-span-7">
-            <form
-              action="#"
-              method="post"
-              className="rounded-3xl bg-white p-8 ring-1 ring-slate-200 shadow-sm"
-            >
-              <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">
-                Anmeldung
-              </span>
-              <h2 className="mt-2 text-2xl font-black tracking-tight text-ink">
-                Meld dich fürs Probetraining an
-              </h2>
-              <p className="mt-2 text-sm text-muted">
-                Wir melden uns innert wenigen Tagen mit allen Infos zurück.
-              </p>
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <Field label="Vorname" name="firstName" />
-                <Field label="Nachname" name="lastName" />
-                <Field label="E-Mail" name="email" type="email" />
-                <Field label="Telefon" name="phone" type="tel" />
-                <Field
-                  label="Alter"
-                  name="age"
-                  type="number"
-                  className="sm:col-span-1"
-                />
-                <div className="sm:col-span-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-ink">
-                    Gruppe
-                  </label>
-                  <select
-                    name="group"
-                    className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Bitte wählen…
-                    </option>
-                    <option value="junioren">Junioren (6–11)</option>
-                    <option value="jugend">Jugend (12–17)</option>
-                    <option value="erwachsene">Erwachsene (ab 18)</option>
-                    <option value="unsicher">Bin mir unsicher</option>
-                  </select>
-                </div>
-                <div className="sm:col-span-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-ink">
-                    Nachricht (optional)
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-                    placeholder="Erfahrungslevel, Fragen, etc."
-                  />
-                </div>
-              </div>
-
-              <button
-                type="button"
-                disabled
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                Anmeldung senden
-              </button>
-
-              <p className="mt-4 text-xs text-muted">
-                Hinweis: Die Anbindung an E-Mail / Backend wird im zweiten
-                Schritt zusammen mit dem CRM realisiert.
-              </p>
-            </form>
+            <ProbetrainingForm />
           </div>
         </div>
       </section>
@@ -241,31 +172,3 @@ function Step({
   );
 }
 
-function Field({
-  label,
-  name,
-  type = "text",
-  className = "",
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  className?: string;
-}) {
-  return (
-    <div className={className}>
-      <label
-        htmlFor={name}
-        className="text-xs font-bold uppercase tracking-wider text-ink"
-      >
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-      />
-    </div>
-  );
-}
