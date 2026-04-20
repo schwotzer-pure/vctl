@@ -67,36 +67,24 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-6 py-8 lg:px-10 flex flex-col sm:flex-row items-center gap-6 sm:justify-between">
-          <p className="text-xs text-muted">Mitglied bei</p>
-          <div className="flex items-center gap-6">
-            <a
-              href="https://www.swiss-cycling.ch/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="opacity-60 hover:opacity-100 transition-opacity"
-            >
-              <Image
-                src="/swiss-cycling-logo.png"
-                alt="Swiss Cycling"
-                width={160}
-                height={46}
-                className="h-10 w-auto object-contain"
-              />
-            </a>
-            <a
-              href="https://swisscycling-luzern.ch/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="opacity-60 hover:opacity-100 transition-opacity"
-            >
-              <Image
-                src="/swisscycling-luzern-logo.png"
-                alt="Kantonaler Radsportverband Luzern"
-                width={120}
-                height={48}
-                className="h-12 w-auto object-contain"
-              />
+        <div className="mx-auto max-w-7xl px-6 py-8 lg:px-10 flex flex-col sm:flex-row items-center gap-8 sm:justify-between">
+          <div className="flex flex-col sm:flex-row items-center gap-8">
+            <div className="flex flex-col items-center sm:items-start gap-3">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted">Mitglied bei</p>
+              <div className="flex items-center gap-6">
+                <a href="https://www.swiss-cycling.ch/" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
+                  <Image src="/swiss-cycling-logo.png" alt="Swiss Cycling" width={160} height={46} className="h-10 w-auto object-contain" />
+                </a>
+                <a href="https://swisscycling-luzern.ch/" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
+                  <Image src="/swisscycling-luzern-logo.png" alt="Kantonaler Radsportverband Luzern" width={120} height={48} className="h-10 w-auto object-contain" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col items-center sm:items-end gap-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted">Sponsor</p>
+            <a href="https://www.goldwurst.ch/" target="_blank" rel="noopener noreferrer" className="opacity-60 hover:opacity-100 transition-opacity">
+              <Image src="/goldwurst-power-logo.png" alt="Goldwurst Power – Jenzer" width={100} height={80} className="h-16 w-auto object-contain" />
             </a>
           </div>
         </div>
