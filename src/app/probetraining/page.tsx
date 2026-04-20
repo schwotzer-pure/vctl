@@ -100,6 +100,55 @@ export default function ProbetrainingPage() {
         </div>
       </section>
 
+      {/* Wegbeschrieb */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-20">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
+          <div className="lg:col-span-4">
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">
+              Anfahrt
+            </span>
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-ink">
+              So findest du uns.
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              Der Trialplatz befindet sich am Murmattweg in Luzern, gut
+              erreichbar mit ÖV und Auto.
+            </p>
+
+            <div className="mt-6 rounded-2xl bg-slate-50 p-6 ring-1 ring-slate-100 text-sm">
+              <p className="font-bold text-ink">Trialplatz Luzern</p>
+              <p className="mt-1 text-muted">Murmattweg 6</p>
+              <p className="text-muted">6005 Luzern</p>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Murmattweg+6,+6005+Luzern"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700"
+              >
+                <svg viewBox="0 0 24 24" width={15} height={15} fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                  <circle cx="12" cy="9" r="2.5"/>
+                </svg>
+                Route öffnen
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-8 overflow-hidden rounded-3xl ring-1 ring-slate-200 shadow-sm aspect-video">
+            <iframe
+              src="https://www.google.com/maps?q=Murmattweg+6,+6005+Luzern&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Trialplatz Luzern"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Checklist + Anmeldeformular */}
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-24">
         <div className="grid gap-10 lg:grid-cols-12">
