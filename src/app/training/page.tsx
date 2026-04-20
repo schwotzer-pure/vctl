@@ -175,6 +175,74 @@ export default function TrainingPage() {
         </section>
       )}
 
+      {/* Trainingsplatz & Anreise */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-20">
+        <div className="grid gap-10 lg:grid-cols-2">
+          {/* Trainingsplatz */}
+          <div>
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">
+              Trainingsplatz
+            </span>
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-ink">
+              Wo wir trainieren.
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              Unser Trial-Trainingsplatz ist am Murmattweg auf der Luzerner
+              Allmend, unter dem Vordach der Mehrzweckhalle südlich vom AAL.
+            </p>
+            <ul className="mt-6 space-y-3">
+              {[
+                "Das grosse Dach schützt vor Regen und Schnee – Training ist zu jeder Jahreszeit möglich.",
+                "Den Mitgliedern steht die Anlage täglich von 07:00 – 22:00 Uhr zur Verfügung.",
+                "Grosse fix montierte Scheinwerfer ermöglichen Trainings auch bei Dunkelheit.",
+                "Zugang zu Garderoben und WC-Anlagen der Turnhalle.",
+                "Super Aussicht!",
+              ].map((v) => (
+                <li key={v} className="flex gap-3 text-sm text-ink">
+                  <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                    <svg viewBox="0 0 24 24" width={12} height={12} fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  <span>{v}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Anreise */}
+          <div>
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">
+              Anreise
+            </span>
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-ink">
+              So kommst du hin.
+            </h2>
+            <ul className="mt-6 space-y-4">
+              {[
+                { icon: "🚲", text: "Mit dem Fahrrad ist es am einfachsten. Koordinaten: 47°02′01.7″N / 8°18′00.6″E (47.033816 / 8.300168)" },
+                { icon: "🚗", text: "Mit dem Auto den AAL-Schildern folgen. Dieser führt direkt zu einem Parkplatz (alle Parkplätze auf der Luzerner Allmend sind bewirtschaftet). Von da in weniger als 2 Minuten zum Trialplatz." },
+                { icon: "🚆", text: "Mit der S-Bahn ab Luzern bis zur Station Allmend/Messe Luzern." },
+                { icon: "🚌", text: "Mit dem Bus Nummer 20 bis zur Haltestelle Allmend/Messe Luzern." },
+              ].map((item) => (
+                <li key={item.icon} className="flex gap-3 text-sm text-ink">
+                  <span className="text-base">{item.icon}</span>
+                  <span className="text-muted leading-relaxed">{item.text}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Murmattweg+6,+6005+Luzern"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700"
+            >
+              Route öffnen
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-24">
         <div className="rounded-3xl bg-ink px-8 py-12 text-white sm:px-14">
