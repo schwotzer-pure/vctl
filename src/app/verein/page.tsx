@@ -55,7 +55,7 @@ export default function VereinPage() {
         kicker="Verein"
         title="Der VCTL. Wer wir sind."
         subtitle="Gegründet 2012, fördern wir Velotrial im Freizeit- und Wettkampfbereich – mit Freude am Sport und am Miteinander."
-        image={{ src: "/images/training.jpg", alt: "VCTL Vereinsleben" }}
+        image={{ src: "/images/trainingsplatz.jpg", alt: "Trainingsplatz VCTL Luzern" }}
       />
 
       {/* Über den Verein */}
