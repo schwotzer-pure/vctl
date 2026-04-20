@@ -8,10 +8,11 @@ export const metadata = {
 };
 
 const vorstand = [
-  { role: "Präsident", name: "Samuel Kummrow", email: "praesident@vctl.ch" },
+  { role: "Präsident", name: "Christian Arnosti", email: "praesident@vctl.ch" },
   { role: "Sportkommissär / Haupttrainer", name: "Debi Studer", email: "" },
   { role: "Kassier", name: "Chantal Häfliger", email: "" },
   { role: "Webmaster / Mitgliederverwaltung", name: "Daniel Wenger", email: "" },
+  { role: "Vereinsentwicklung", name: "Christian Schwotzer", email: "" },
 ];
 
 const memberships = [
