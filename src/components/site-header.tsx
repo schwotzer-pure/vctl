@@ -10,6 +10,7 @@ const navItems = [
   { href: "/training", label: "Training" },
   { href: "/swiss-cup", label: "Swiss-Cup" },
   { href: "/probetraining", label: "Probetraining" },
+  { href: "/verein", label: "Verein" },
 ];
 
 export function SiteHeader() {
