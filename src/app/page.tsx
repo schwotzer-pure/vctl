@@ -13,7 +13,7 @@ export default function HomePage() {
         >
           {/* Layer A: Video in Graustufen, blendet als "screen" auf den dunklen Sockel */}
           <video
-            src="/hero.mp4"
+            src="/swiss-cup.mp4"
             autoPlay
             loop
             muted

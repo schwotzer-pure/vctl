@@ -4,18 +4,52 @@ type PageHeaderProps = {
   kicker: string;
   title: string;
   subtitle?: string;
-  /** Optionales Hintergrundbild im Duotone-Look (Orange × Tiefschwarz). */
+  /** Hintergrundbild im Duotone-Look (Orange × Tiefschwarz). */
   image?: {
     src: string;
     alt?: string;
   };
+  /** Hintergrundvideo im Duotone-Look — überschreibt image wenn gesetzt. */
+  video?: {
+    src: string;
+    /** CSS object-position, z.B. "center 30%" um nach unten zu verschieben. Standard: "center" */
+    objectPosition?: string;
+  };
 };
 
-export function PageHeader({ kicker, title, subtitle, image }: PageHeaderProps) {
+export function PageHeader({ kicker, title, subtitle, image, video }: PageHeaderProps) {
   return (
     <section className="relative overflow-hidden text-white bg-[#0a0806]">
-      {image ? (
-        // Duotone-Stack (identisch zum Home-Hero)
+      {video ? (
+        // Duotone-Stack mit Video (identisch zum Home-Hero)
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 isolate"
+          style={{ backgroundColor: "#0a0806" }}
+        >
+          <video
+            src={video.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              objectPosition: video.objectPosition ?? "center",
+              filter: "grayscale(100%) contrast(1.2)",
+              mixBlendMode: "screen",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundColor: "#fb923c",
+              mixBlendMode: "multiply",
+            }}
+          />
+        </div>
+      ) : image ? (
+        // Duotone-Stack mit Bild
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 isolate"
@@ -42,11 +76,11 @@ export function PageHeader({ kicker, title, subtitle, image }: PageHeaderProps) 
           />
         </div>
       ) : (
-        // Fallback: nur Orange-Gradient (falls kein Bild gesetzt)
+        // Fallback: nur Orange-Gradient
         <div aria-hidden className="absolute inset-0 bg-hero-gradient" />
       )}
 
-      {/* Feiner Vignette-Scrim links für Textlesbarkeit */}
+      {/* Vignette-Scrim links für Textlesbarkeit */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -56,7 +90,7 @@ export function PageHeader({ kicker, title, subtitle, image }: PageHeaderProps) 
         }}
       />
 
-      {/* Dezenter Orange-Glow unten rechts */}
+      {/* Orange-Glow unten rechts */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-60"
@@ -75,7 +109,7 @@ export function PageHeader({ kicker, title, subtitle, image }: PageHeaderProps) 
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-32 pb-32 lg:px-10">
+      <div className="relative mx-auto max-w-7xl px-6 pt-36 pb-40 lg:px-10 lg:pt-44 lg:pb-52">
         <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] ring-1 ring-white/30 backdrop-blur">
           <span className="h-1.5 w-1.5 rounded-full bg-white" />
           {kicker}
