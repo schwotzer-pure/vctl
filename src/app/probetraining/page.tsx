@@ -29,11 +29,9 @@ const groups = [
 ];
 
 const checklist = [
-  "Ein Velo (Trialbike wenn vorhanden – sonst MTB mit Plattformpedalen)",
   "Helm (Pflicht), Handschuhe & feste Schuhe",
   "Wettertaugliche Kleidung, in der du dich bewegen kannst",
   "Wasserflasche und ein kleiner Snack",
-  "Lust, Neues zu probieren und ein paar Mal auf den Boden zu gucken",
 ];
 
 export default function ProbetrainingPage() {
@@ -138,9 +136,8 @@ export default function ProbetrainingPage() {
             <div className="mt-8 rounded-2xl bg-slate-50 p-6 ring-1 ring-slate-100 text-sm text-muted">
               <p className="font-semibold text-ink">Gut zu wissen</p>
               <p className="mt-2">
-                Kein eigenes Trialbike? Kein Problem. Meld dich einfach bei
-                uns – manchmal lässt sich für die ersten Male ein Ersatzbike
-                organisieren.
+                Kein eigenes Trialbike? Kein Problem. Wir klären dies gemeinsam
+                vor dem ersten Training.
               </p>
             </div>
           </div>

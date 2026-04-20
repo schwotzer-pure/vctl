@@ -112,22 +112,22 @@ export function SiteHeader() {
 
       {open && (
         <div className="md:hidden bg-white/95 backdrop-blur border-t border-slate-200">
-          <ul className="flex flex-col px-6 py-4 space-y-3 text-sm font-medium uppercase tracking-wide">
+          <ul className="flex flex-col px-8 py-6 space-y-1 text-base font-semibold uppercase tracking-wide">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="block text-slate-700 hover:text-brand-600"
+                  className="block py-3 text-slate-700 hover:text-brand-600"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </Link>
               </li>
             ))}
-            <li>
+            <li className="pt-4">
               <Link
                 href="/probetraining"
-                className="mt-2 block w-full rounded-full bg-brand-600 px-5 py-2.5 text-center text-white"
+                className="block w-full rounded-full bg-brand-600 px-5 py-4 text-center text-white"
                 onClick={() => setOpen(false)}
               >
                 Probetraining

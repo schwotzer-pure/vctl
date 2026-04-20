@@ -34,7 +34,7 @@ export async function submitProbetraining(
 
   const { error } = await resend.emails.send({
     from: "VCTL Probetraining <onboarding@resend.dev>",
-    to: "christian.schwotzer@gmail.com",
+    to: "christian.schwotzer@hellopure.io",
     replyTo: email,
     subject: `Probetraining-Anmeldung: ${firstName} ${lastName}`,
     html: `
