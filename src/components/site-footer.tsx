@@ -77,11 +77,11 @@ export function SiteFooter() {
               className="opacity-60 hover:opacity-100 transition-opacity"
             >
               <Image
-                src="/swiss-cycling-logo.svg"
+                src="/swiss-cycling-logo.png"
                 alt="Swiss Cycling"
-                width={48}
-                height={48}
-                className="h-12 w-12 object-contain"
+                width={160}
+                height={46}
+                className="h-10 w-auto object-contain"
               />
             </a>
             <a
