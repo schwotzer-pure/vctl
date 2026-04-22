@@ -191,7 +191,7 @@ export default function ProbetrainingPage() {
             </div>
           </div>
 
-          <div id="anmeldung" className="lg:col-span-7">
+          <div id="anmeldung" className="lg:col-span-7 scroll-mt-28">
             <ProbetrainingForm />
           </div>
         </div>
