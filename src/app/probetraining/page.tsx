@@ -117,8 +117,7 @@ export default function ProbetrainingPage() {
 
             <div className="mt-6 rounded-2xl bg-slate-50 p-6 ring-1 ring-slate-100 text-sm">
               <p className="font-bold text-ink">Trialplatz Luzern</p>
-              <p className="mt-1 text-muted">Murmattweg 6</p>
-              <p className="text-muted">6005 Luzern</p>
+              <p className="mt-1 text-muted">6005 Luzern</p>
               <a
                 href="https://www.google.com/maps/dir/?api=1&destination=47.033816,8.300168"
                 target="_blank"
