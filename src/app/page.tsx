@@ -18,6 +18,7 @@ export default function HomePage() {
             loop
             muted
             playsInline
+            suppressHydrationWarning
             className="absolute inset-0 h-full w-full object-cover object-center"
             style={{
               filter: "grayscale(100%) contrast(1.2)",

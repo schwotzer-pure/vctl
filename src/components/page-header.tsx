@@ -33,6 +33,7 @@ export function PageHeader({ kicker, title, subtitle, image, video }: PageHeader
             loop
             muted
             playsInline
+            suppressHydrationWarning
             className="absolute inset-0 h-full w-full object-cover"
             style={{
               objectPosition: video.objectPosition ?? "center",
