@@ -232,7 +232,7 @@ export default function TrainingPage() {
               ))}
             </ul>
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=Murmattweg+6,+6005+Luzern"
+              href="https://www.google.com/maps/dir/?api=1&destination=47.033816,8.300168"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700"

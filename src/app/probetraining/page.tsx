@@ -120,7 +120,7 @@ export default function ProbetrainingPage() {
               <p className="mt-1 text-muted">Murmattweg 6</p>
               <p className="text-muted">6005 Luzern</p>
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Murmattweg+6,+6005+Luzern"
+                href="https://www.google.com/maps/dir/?api=1&destination=47.033816,8.300168"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700"
@@ -136,7 +136,7 @@ export default function ProbetrainingPage() {
 
           <div className="lg:col-span-8 overflow-hidden rounded-3xl ring-1 ring-slate-200 shadow-sm aspect-video">
             <iframe
-              src="https://www.google.com/maps?q=Murmattweg+6,+6005+Luzern&output=embed"
+              src="https://www.google.com/maps?q=47.033816,8.300168&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
