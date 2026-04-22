@@ -78,12 +78,6 @@ export default function SwissCupPage() {
                   {nextRace.note ? ` · ${nextRace.note}` : ""}
                 </p>
               </div>
-              <Link
-                href="#anmeldung"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-brand-500/30 transition hover:bg-brand-700"
-              >
-                Anmeldung
-              </Link>
             </div>
           </div>
         </section>
@@ -147,35 +141,6 @@ export default function SwissCupPage() {
         )}
       </section>
 
-      {/* Anmeldung */}
-      <section id="anmeldung" className="mx-auto max-w-7xl px-6 lg:px-10 pb-24">
-        <div className="overflow-hidden rounded-3xl bg-ink p-10 text-white sm:p-14">
-          <div className="grid gap-8 lg:grid-cols-5 items-center">
-            <div className="lg:col-span-3">
-              <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-400">
-                Wichtig
-              </span>
-              <h3 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">
-                Anmeldeformular bitte ausfüllen.
-              </h3>
-              <p className="mt-4 text-white/80 leading-relaxed">
-                Auch wer 2026 an keinem Wettkampf teilnehmen kann, meldet sich
-                bitte zurück – wir benötigen die Rückmeldung von{" "}
-                <span className="font-bold text-white">allen</span> für die
-                Planung (Betreuung, Fahrservice, Gruppierung).
-              </p>
-            </div>
-            <div className="lg:col-span-2 lg:justify-self-end">
-              <Link
-                href="/probetraining"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-600"
-              >
-                Zur Anmeldung
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
