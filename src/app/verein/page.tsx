@@ -181,7 +181,7 @@ export default function VereinPage() {
         {/* Anmelde-CTA */}
         <div className="mt-10">
           <Link
-            href="/probetraining"
+            href="/probetraining#anmeldung"
             className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-700"
           >
             Probetraining buchen
