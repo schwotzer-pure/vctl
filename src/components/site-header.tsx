@@ -72,7 +72,7 @@ export function SiteHeader() {
 
         <div className="hidden md:block">
           <Link
-            href="/probetraining"
+            href="/probetraining#anmeldung"
             className={[
               "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold uppercase tracking-wide transition",
               light
@@ -127,7 +127,7 @@ export function SiteHeader() {
             ))}
             <li className="pt-4">
               <Link
-                href="/probetraining"
+                href="/probetraining#anmeldung"
                 className="block w-full rounded-full bg-brand-600 px-5 py-4 text-center text-white"
                 onClick={() => setOpen(false)}
               >
