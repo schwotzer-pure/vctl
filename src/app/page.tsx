@@ -83,7 +83,7 @@ export default function HomePage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
-                href="/probetraining"
+                href="/probetraining#anmeldung"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-600 shadow-lg shadow-black/10 transition hover:bg-brand-50"
               >
                 Probetraining buchen
@@ -201,7 +201,7 @@ export default function HomePage() {
             </div>
             <div className="lg:justify-self-end">
               <Link
-                href="/probetraining"
+                href="/probetraining#anmeldung"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-brand-600 shadow-lg shadow-black/10 transition hover:bg-brand-50"
               >
                 Zum Probetraining <ArrowRight />
