@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s · VCTL",
   },
   description:
-    "Velo- & Trial Club Luzern – Trainings am Trialplatz Luzern, Swiss-Cup Wettkämpfe und Nachwuchsförderung.",
+    "Velo- & Trial Club Luzern – Trainings am Trialplatz Luzern, Swisscup Wettkämpfe und Nachwuchsförderung.",
 };
 
 export default function RootLayout({

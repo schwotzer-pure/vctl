@@ -52,7 +52,7 @@ export function ProbetrainingForm() {
             className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
           >
             <option value="" disabled>Bitte wählen…</option>
-            <option value="junioren">Junioren (6–11)</option>
+            <option value="junioren">Kinder (6–11)</option>
             <option value="jugend">Jugend (12–17)</option>
             <option value="erwachsene">Erwachsene (ab 18)</option>
             <option value="unsicher">Bin mir unsicher</option>

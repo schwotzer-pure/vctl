@@ -79,8 +79,8 @@ export default function HomePage() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
               Wir trainieren jeden Mittwoch am Trialplatz Luzern – für
-              Junioren, Jugend und Erwachsene. Vom ersten Balance-Trick bis
-              zum Swiss-Cup.
+              Kinder, Jugend und Erwachsene. Vom ersten Balance-Trick bis
+              zum Swisscup.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
@@ -112,11 +112,11 @@ export default function HomePage() {
             />
             <QuickFact
               kicker="3 Gruppen"
-              title="Junioren · Jugend · Erwachsene"
+              title="Kinder · Jugend · Erwachsene"
               desc="Von 16:15 bis 20:15 Uhr."
             />
             <QuickFact
-              kicker="Swiss-Cup 2026"
+              kicker="Swisscup 2026"
               title="6 Wettkämpfe"
               desc="April bis September – schweizweit."
             />
@@ -152,7 +152,7 @@ export default function HomePage() {
                 href="/swiss-cup"
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-wide text-ink ring-1 ring-slate-300 transition hover:bg-slate-100"
               >
-                Swiss-Cup Termine
+                Swisscup Termine
               </Link>
             </div>
           </div>
@@ -165,12 +165,12 @@ export default function HomePage() {
             />
             <FeatureCard
               title="Nachwuchsförderung"
-              desc="Wir bringen unsere Kids aktiv an den Swiss-Cup – inkl. Fahr- & Betreuungsservice."
+              desc="Wir bringen unsere Kids aktiv an den Swisscup – inkl. Fahr- & Betreuungsservice."
               accent="02"
             />
             <FeatureCard
               title="Aktives Vereinsleben"
-              desc="Grill & Chill im Sommer, gemeinsame Events und eine Kaffee/Bier-Ecke am Platz."
+              desc="Grill & Chill im Sommer, gemeinsame Events und eine Kaffee-Ecke am Platz."
               accent="03"
             />
             <FeatureCard

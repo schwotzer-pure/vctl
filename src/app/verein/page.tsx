@@ -71,7 +71,7 @@ export default function VereinPage() {
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Der Velo- & Trial Club Luzern (VCTL) wurde 2012 gegründet und
               fördert Velotrial auf allen Niveaus – vom ersten Probetraining bis
-              zum Swiss-Cup. Wir trainieren jeden Mittwoch am Trialplatz Luzern
+              zum Swisscup. Wir trainieren jeden Mittwoch am Trialplatz Luzern
               in strukturierten Gruppen für Junioren, Jugend und Erwachsene.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted">

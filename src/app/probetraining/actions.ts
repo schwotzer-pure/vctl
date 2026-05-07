@@ -8,7 +8,7 @@ export type FormState = {
 };
 
 const groupLabels: Record<string, string> = {
-  junioren: "Junioren (6–11 Jahre)",
+  junioren: "Kinder (6–11 Jahre)",
   jugend: "Jugend (12–17 Jahre)",
   erwachsene: "Erwachsene (ab 18 Jahren)",
   unsicher: "Bin mir unsicher",

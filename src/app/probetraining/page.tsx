@@ -9,7 +9,7 @@ export const metadata = {
 
 const groups = [
   {
-    group: "Junioren",
+    group: "Kinder",
     time: "16:15 – 17:15",
     age: "ca. 6 – 11 Jahre",
     desc: "Spielerischer Einstieg, Balance, erste Tricks.",
