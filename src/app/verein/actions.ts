@@ -55,9 +55,16 @@ export async function submitMitgliedschaft(
     return { error: "Bitte bestätige beide Hinweise." };
   }
 
+  if (!process.env.RESEND_API_KEY) {
+    console.error("Mitgliedschaft: RESEND_API_KEY is not set");
+    return { error: "Versand vorübergehend nicht möglich. Bitte melde dich direkt bei mitglieder@vctl.ch." };
+  }
+
   const resend = new Resend(process.env.RESEND_API_KEY);
 
-  const { error } = await resend.emails.send({
+  let resendError: unknown = null;
+  try {
+    const result = await resend.emails.send({
     from: "VCTL Mitgliedschaft <onboarding@resend.dev>",
     to: "christian.schwotzer@hellopure.io",
     replyTo: email,
@@ -113,11 +120,16 @@ export async function submitMitgliedschaft(
         </div>
       </div>
     `,
-  });
+    });
+    resendError = result.error;
+  } catch (err) {
+    console.error("Mitgliedschaft: Resend threw:", err);
+    return { error: "Versand fehlgeschlagen. Bitte versuch es später nochmals oder schreib uns an mitglieder@vctl.ch." };
+  }
 
-  if (error) {
-    console.error("Resend error:", error);
-    return { error: "Versand fehlgeschlagen. Bitte versuch es später nochmals." };
+  if (resendError) {
+    console.error("Mitgliedschaft: Resend error:", resendError);
+    return { error: "Versand fehlgeschlagen. Bitte versuch es später nochmals oder schreib uns an mitglieder@vctl.ch." };
   }
 
   return { success: true };
