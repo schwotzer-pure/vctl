@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/page-header";
-import Link from "next/link";
+import { MitgliedschaftForm } from "./MitgliedschaftForm";
 
 export const metadata = {
   title: "Verein",
@@ -178,14 +178,9 @@ export default function VereinPage() {
           </ul>
         </div>
 
-        {/* Anmelde-CTA */}
-        <div className="mt-10">
-          <Link
-            href="/probetraining#anmeldung"
-            className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-700"
-          >
-            Probetraining buchen
-          </Link>
+        {/* Anmeldeformular */}
+        <div id="anmeldung" className="mt-12 scroll-mt-28">
+          <MitgliedschaftForm />
         </div>
       </section>
     </>
