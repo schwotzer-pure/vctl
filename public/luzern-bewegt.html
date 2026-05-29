@@ -126,8 +126,14 @@
   .checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;}
   .check{display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.07);
     border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:11px 14px;}
-  .box{width:20px;height:20px;border:2px solid var(--mint);border-radius:5px;flex:0 0 auto;}
+  .box{width:20px;height:20px;border:2px solid var(--mint);border-radius:5px;flex:0 0 auto;position:relative;}
   .check span{font-weight:600;font-size:15px;}
+  .check.done .box{background:var(--mint);border-color:var(--mint);}
+  .check.done .box::after{
+    content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;
+    border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);
+  }
+  .check.done span{text-decoration:line-through;opacity:.55;}
 
   footer{padding:0 40px 24px;color:var(--muted);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
 
@@ -280,8 +286,8 @@
       <h2>To-do für mich</h2>
       <p>Mitnehmen / organisieren vor dem 14. Juni</p>
       <div class="checks">
-        <div class="check"><div class="box"></div><span>Helme</span></div>
-        <div class="check"><div class="box"></div><span>Räder</span></div>
+        <div class="check done"><div class="box"></div><span>Helme</span></div>
+        <div class="check done"><div class="box"></div><span>Räder</span></div>
         <div class="check"><div class="box"></div><span>Bus</span></div>
         <div class="check"><div class="box"></div><span>Flyer</span></div>
         <div class="check"><div class="box"></div><span>Getränke</span></div>
