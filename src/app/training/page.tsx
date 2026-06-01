@@ -50,10 +50,10 @@ const planAprilMai: PlanRow[] = [
 ];
 
 const planJuniJuli: PlanRow[] = [
-  { date: "Mi, 03.06.", iso: "2026-06-03", kw: "23", junioren: "René", jugend: "René", erwachsene: "–" },
+  { date: "Mi, 03.06.", iso: "2026-06-03", kw: "23", junioren: "René", jugend: "Mario", erwachsene: "–" },
   { date: "Sa, 06.06.", iso: "2026-06-06", note: "Wettkampf Valbirse", type: "wettkampf" },
-  { date: "Mi, 10.06.", iso: "2026-06-10", kw: "24", junioren: "René", jugend: "René", erwachsene: "–" },
-  { date: "Mi, 17.06.", iso: "2026-06-17", kw: "25", junioren: "René", jugend: "René", erwachsene: "–" },
+  { date: "Mi, 10.06.", iso: "2026-06-10", kw: "24", junioren: "René", jugend: "Mario", erwachsene: "–" },
+  { date: "Mi, 17.06.", iso: "2026-06-17", kw: "25", junioren: "René", jugend: "Mario", erwachsene: "–" },
   { date: "Mi, 24.06.", iso: "2026-06-24", kw: "26", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   { date: "So, 28.06.", iso: "2026-06-28", note: "Wettkampf Delémont", type: "wettkampf" },
   { date: "Mi, 01.07.", iso: "2026-07-01", kw: "27", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
