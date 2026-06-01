@@ -18,7 +18,7 @@ type Session = {
 };
 
 const sessions: Session[] = [
-  { time: "16:15 – 17:15", group: "Junioren", level: "Einstieg & Grundlagen" },
+  { time: "16:15 – 17:15", group: "Kids", level: "Einstieg & Grundlagen" },
   { time: "17:15 – 18:45", group: "Jugend", level: "Rookie bis Advanced" },
   { time: "19:00 – 20:15", group: "Erwachsene", level: "Alle Levels" },
 ];
@@ -50,10 +50,10 @@ const planAprilMai: PlanRow[] = [
 ];
 
 const planJuniJuli: PlanRow[] = [
-  { date: "Mi, 03.06.", iso: "2026-06-03", kw: "23", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 03.06.", iso: "2026-06-03", kw: "23", junioren: "René", jugend: "René", erwachsene: "–" },
   { date: "Sa, 06.06.", iso: "2026-06-06", note: "Wettkampf Valbirse", type: "wettkampf" },
-  { date: "Mi, 10.06.", iso: "2026-06-10", kw: "24", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
-  { date: "Mi, 17.06.", iso: "2026-06-17", kw: "25", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 10.06.", iso: "2026-06-10", kw: "24", junioren: "René", jugend: "René", erwachsene: "–" },
+  { date: "Mi, 17.06.", iso: "2026-06-17", kw: "25", junioren: "René", jugend: "René", erwachsene: "–" },
   { date: "Mi, 24.06.", iso: "2026-06-24", kw: "26", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   { date: "So, 28.06.", iso: "2026-06-28", note: "Wettkampf Delémont", type: "wettkampf" },
   { date: "Mi, 01.07.", iso: "2026-07-01", kw: "27", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
@@ -280,7 +280,7 @@ function PlanTable({ title, rows }: { title: string; rows: PlanRow[] }) {
             <tr className="text-left text-xs font-bold uppercase tracking-wider text-muted">
               <th className="px-6 py-3">Datum</th>
               <th className="px-3 py-3">KW</th>
-              <th className="px-3 py-3">Junioren</th>
+              <th className="px-3 py-3">Kids</th>
               <th className="px-3 py-3">Jugend</th>
               <th className="px-3 py-3">Erwachsene</th>
               <th className="px-6 py-3">Bemerkung</th>
