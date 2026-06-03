@@ -15,6 +15,8 @@ const sizeLabels: Record<string, string> = {
   ...Object.fromEntries(adultSizes.map((s) => [`adult-${s}`, `Erwachsene ${s}`])),
 };
 
+const SHIRT_RECIPIENT = "christian.schwotzer@gmail.com";
+
 export async function submitShirtBestellung(
   _prev: FormState,
   formData: FormData,
@@ -32,21 +34,76 @@ export async function submitShirtBestellung(
 
   const sizeLabel = sizeLabels[size];
 
+  // Versuche beide Sender parallel. Erfolg wenn mindestens einer durchgeht.
+  const [sheetOk, emailOk] = await Promise.all([
+    appendToSheet({ firstName, lastName, sizeLabel }),
+    sendEmail({ firstName, lastName, sizeLabel }),
+  ]);
+
+  if (!sheetOk && !emailOk) {
+    return {
+      error: "Versand fehlgeschlagen. Bitte später nochmals versuchen oder direkt bei mitglieder@vctl.ch melden.",
+    };
+  }
+
+  return { success: true };
+}
+
+// --- Sheet (Google Apps Script Webhook) -----------------------------------
+
+async function appendToSheet(payload: {
+  firstName: string;
+  lastName: string;
+  sizeLabel: string;
+}): Promise<boolean> {
+  const url = process.env.SHIRT_SHEET_WEBHOOK_URL;
+  if (!url) {
+    console.warn("Shirt: SHIRT_SHEET_WEBHOOK_URL is not set, skipping sheet append");
+    return false;
+  }
+
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        vorname: payload.firstName,
+        nachname: payload.lastName,
+        groesse: payload.sizeLabel,
+      }),
+      // Apps Script darf bis ~5s brauchen, also kein zu enges Limit.
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!res.ok) {
+      console.error("Shirt: Sheet append HTTP", res.status, await res.text().catch(() => ""));
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Shirt: Sheet append threw:", err);
+    return false;
+  }
+}
+
+// --- Email (Resend) -------------------------------------------------------
+
+async function sendEmail(payload: {
+  firstName: string;
+  lastName: string;
+  sizeLabel: string;
+}): Promise<boolean> {
   if (!process.env.RESEND_API_KEY) {
     console.error("Shirt: RESEND_API_KEY is not set");
-    return {
-      error: "Versand vorübergehend nicht möglich. Bitte direkt bei mitglieder@vctl.ch melden.",
-    };
+    return false;
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
 
-  let resendError: unknown = null;
   try {
     const result = await resend.emails.send({
       from: "VCTL Shirt <onboarding@resend.dev>",
-      to: "christian.schwotzer@hellopure.io",
-      subject: `Shirt-Nachbestellung: ${firstName} ${lastName} (${sizeLabel})`,
+      to: SHIRT_RECIPIENT,
+      subject: `Shirt-Nachbestellung: ${payload.firstName} ${payload.lastName} (${payload.sizeLabel})`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a">
           <div style="background:#fb923c;padding:32px 40px;border-radius:16px 16px 0 0">
@@ -57,27 +114,24 @@ export async function submitShirtBestellung(
             <table style="width:100%;border-collapse:collapse;font-size:15px">
               <tr style="border-bottom:1px solid #f1f5f9">
                 <td style="padding:12px 0;color:#64748b;font-weight:600;width:35%">Name</td>
-                <td style="padding:12px 0;font-weight:700">${firstName} ${lastName}</td>
+                <td style="padding:12px 0;font-weight:700">${payload.firstName} ${payload.lastName}</td>
               </tr>
               <tr>
                 <td style="padding:12px 0;color:#64748b;font-weight:600">Grösse</td>
-                <td style="padding:12px 0;font-weight:700">${sizeLabel}</td>
+                <td style="padding:12px 0;font-weight:700">${payload.sizeLabel}</td>
               </tr>
             </table>
           </div>
         </div>
       `,
     });
-    resendError = result.error;
+    if (result.error) {
+      console.error("Shirt: Resend error:", result.error);
+      return false;
+    }
+    return true;
   } catch (err) {
     console.error("Shirt: Resend threw:", err);
-    return { error: "Versand fehlgeschlagen. Bitte später nochmals versuchen." };
+    return false;
   }
-
-  if (resendError) {
-    console.error("Shirt: Resend error:", resendError);
-    return { error: "Versand fehlgeschlagen. Bitte später nochmals versuchen." };
-  }
-
-  return { success: true };
 }
