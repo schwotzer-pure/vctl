@@ -84,6 +84,98 @@ export function ShirtForm() {
               ))}
             </optgroup>
           </select>
+
+          <details className="group mt-3 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm open:bg-white">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-2 font-semibold text-ink select-none">
+              <span className="inline-flex items-center gap-2">
+                <svg
+                  viewBox="0 0 24 24"
+                  width={16}
+                  height={16}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-brand-600"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8v.01M11 12h1v4h1" />
+                </svg>
+                Grössentabelle anzeigen
+              </span>
+              <svg
+                viewBox="0 0 24 24"
+                width={16}
+                height={16}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-muted transition group-open:rotate-180"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+
+            <div className="mt-4 space-y-5">
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-600">
+                  Kindergrössen
+                </h4>
+                <div className="mt-2 overflow-hidden rounded-lg ring-1 ring-slate-200">
+                  <table className="w-full text-left text-xs">
+                    <thead className="bg-slate-100 text-muted">
+                      <tr>
+                        <th className="px-3 py-2 font-bold uppercase tracking-wider">Grösse</th>
+                        <th className="px-3 py-2 font-bold uppercase tracking-wider">Körpergrösse</th>
+                        <th className="px-3 py-2 font-bold uppercase tracking-wider">Alter ca.</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 bg-white text-ink">
+                      <SizeRow size="104" body="99 – 104 cm" age="3 – 4 J." />
+                      <SizeRow size="116" body="110 – 116 cm" age="5 – 6 J." />
+                      <SizeRow size="128" body="122 – 128 cm" age="7 – 8 J." />
+                      <SizeRow size="140" body="134 – 140 cm" age="9 – 10 J." />
+                      <SizeRow size="152" body="146 – 152 cm" age="11 – 12 J." />
+                      <SizeRow size="164" body="158 – 164 cm" age="13 – 14 J." />
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-600">
+                  Erwachsene
+                </h4>
+                <div className="mt-2 overflow-hidden rounded-lg ring-1 ring-slate-200">
+                  <table className="w-full text-left text-xs">
+                    <thead className="bg-slate-100 text-muted">
+                      <tr>
+                        <th className="px-3 py-2 font-bold uppercase tracking-wider">Grösse</th>
+                        <th className="px-3 py-2 font-bold uppercase tracking-wider">Körpergrösse</th>
+                        <th className="px-3 py-2 font-bold uppercase tracking-wider">Brustumfang</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 bg-white text-ink">
+                      <SizeRow size="XS" body="162 – 168 cm" age="84 – 88 cm" />
+                      <SizeRow size="S" body="168 – 174 cm" age="89 – 94 cm" />
+                      <SizeRow size="M" body="174 – 180 cm" age="95 – 100 cm" />
+                      <SizeRow size="L" body="180 – 186 cm" age="101 – 106 cm" />
+                      <SizeRow size="XL" body="186 – 192 cm" age="107 – 112 cm" />
+                      <SizeRow size="XXL" body="192 – 198 cm" age="113 – 118 cm" />
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <p className="text-xs text-muted">
+                Richtwerte — die effektive Passform kann je nach Hersteller leicht
+                abweichen. Im Zweifel die nächstgrössere Grösse wählen.
+              </p>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -129,5 +221,15 @@ function Field({
         className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
       />
     </div>
+  );
+}
+
+function SizeRow({ size, body, age }: { size: string; body: string; age: string }) {
+  return (
+    <tr>
+      <td className="px-3 py-2 font-bold">{size}</td>
+      <td className="px-3 py-2 text-muted">{body}</td>
+      <td className="px-3 py-2 text-muted">{age}</td>
+    </tr>
   );
 }
