@@ -15,7 +15,10 @@ const sizeLabels: Record<string, string> = {
   ...Object.fromEntries(adultSizes.map((s) => [`adult-${s}`, `Erwachsene ${s}`])),
 };
 
-const SHIRT_RECIPIENT = "christian.schwotzer@gmail.com";
+// Resend-Sandbox (onboarding@resend.dev) liefert nur an die Account-Owner-Adresse.
+// Mails an Gmail werden geblockt — siehe Resend-Doku. Wenn wir eine eigene Domain
+// verifiziert haben, kann hier wieder eine beliebige Adresse stehen.
+const SHIRT_RECIPIENT = "christian.schwotzer@hellopure.io";
 
 export async function submitShirtBestellung(
   _prev: FormState,
