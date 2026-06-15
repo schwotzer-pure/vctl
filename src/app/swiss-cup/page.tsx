@@ -58,7 +58,7 @@ export default function SwissCupPage() {
         kicker="Swisscup 2026"
         title="Sechs Wettkämpfe. Eine Saison."
         subtitle="Vom Tessin bis in den Aargau: Der Swisscup bringt die Trial-Community schweizweit zusammen. Der VCTL ist dabei."
-        image={{ src: "/images/hero-trial.webp", alt: "VCTL-Fahrer im Trial-Parcours" }}
+        video={{ src: "/hero.mp4", objectPosition: "center 30%" }}
       />
 
       {/* Next Race Highlight */}

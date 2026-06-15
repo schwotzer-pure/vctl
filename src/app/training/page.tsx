@@ -102,7 +102,7 @@ export default function TrainingPage() {
         kicker="Training"
         title="Jeden Mittwoch am Trialplatz Luzern."
         subtitle="Drei Gruppen, zwei Trainer, ein Platz. Wir trainieren fokussiert – mit Platz für Einsteiger*innen und ambitionierte Riders."
-        image={{ src: "/images/hero-sprung.webp", alt: "VCTL-Fahrer beim Trial-Training" }}
+        video={{ src: "/training.mp4", objectPosition: "center 30%" }}
       />
 
       {/* Gruppen */}

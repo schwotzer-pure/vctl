@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -182,6 +183,38 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Impressionen */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-24">
+        <div className="max-w-2xl">
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">
+            Mittendrin
+          </span>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-ink sm:text-4xl">
+            Impressionen vom Platz
+          </h2>
+          <p className="mt-5 text-base leading-relaxed text-muted">
+            Keine Stockfotos – echte Bilder aus unseren Mittwoch-Trainings und
+            vom Swisscup. So sieht Velotrial beim VCTL aus.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <GalleryPhoto
+            src="/images/foto-kind.webp"
+            alt="Junger VCTL-Fahrer konzentriert auf dem Trialbike"
+            priority
+          />
+          <GalleryPhoto
+            src="/images/foto-trial.webp"
+            alt="VCTL-Fahrer balanciert im Trial-Parcours"
+          />
+          <GalleryPhoto
+            src="/images/foto-sprung.webp"
+            alt="VCTL-Fahrer springt über ein Hindernis"
+          />
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-6 lg:px-10 pb-24">
         <div className="relative overflow-hidden rounded-3xl bg-hero-gradient px-8 py-14 text-white sm:px-14 sm:py-20">
@@ -253,6 +286,29 @@ function FeatureCard({
         </span>
       </div>
       <p className="mt-3 text-sm leading-relaxed text-muted">{desc}</p>
+    </div>
+  );
+}
+
+function GalleryPhoto({
+  src,
+  alt,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+}) {
+  return (
+    <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-slate-200">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        priority={priority}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        className="object-cover transition duration-500 ease-out group-hover:scale-[1.04]"
+      />
     </div>
   );
 }
