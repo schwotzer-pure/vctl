@@ -33,7 +33,7 @@ type PlanRow = {
   jugend?: string;
   erwachsene?: string;
   note?: string;
-  type?: "ferien" | "wettkampf";
+  type?: "ferien" | "wettkampf" | "vereinstermin";
 };
 
 const planAprilMai: PlanRow[] = [
@@ -61,6 +61,35 @@ const planJuniJuli: PlanRow[] = [
   { date: "04.07. – 16.08.", iso: "2026-08-16", note: "Sommerferien – Spezialtraining", type: "ferien" },
 ];
 
+// Trainings nach den Sommerferien. Trainerzuteilung aus Debis Plan:
+// "Debi" = Debi ist im Training, "tbd" = Debi weg (z.B. Wettkampf/Camp), Trainer noch offen.
+const planAugDez: PlanRow[] = [
+  { date: "Mi, 19.08.", iso: "2026-08-19", kw: "34", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 26.08.", iso: "2026-08-26", kw: "35", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 02.09.", iso: "2026-09-02", kw: "36", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 09.09.", iso: "2026-09-09", kw: "37", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 16.09.", iso: "2026-09-16", kw: "38", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 23.09.", iso: "2026-09-23", kw: "39", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 30.09.", iso: "2026-09-30", kw: "40", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 07.10.", iso: "2026-10-07", kw: "41", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 14.10.", iso: "2026-10-14", kw: "42", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 21.10.", iso: "2026-10-21", kw: "43", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 28.10.", iso: "2026-10-28", kw: "44", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 04.11.", iso: "2026-11-04", kw: "45", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 11.11.", iso: "2026-11-11", kw: "46", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 18.11.", iso: "2026-11-18", kw: "47", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 25.11.", iso: "2026-11-25", kw: "48", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 02.12.", iso: "2026-12-02", kw: "49", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 09.12.", iso: "2026-12-09", kw: "50", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 16.12.", iso: "2026-12-16", kw: "51", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+  { date: "Mi, 23.12.", iso: "2026-12-23", kw: "52", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
+];
+
+// Vereinstermine (kein Training).
+const planVereinstermine: PlanRow[] = [
+  { date: "Fr, 19.03.2027", iso: "2027-03-19", note: "Generalversammlung VTCL", type: "vereinstermin" },
+];
+
 // Liefert den heutigen Tag als Date auf 00:00:00.
 function startOfToday(): Date {
   const d = new Date();
@@ -78,7 +107,13 @@ export default function TrainingPage() {
   const today = startOfToday();
   const aprilMai = upcoming(planAprilMai);
   const juniJuli = upcoming(planJuniJuli);
-  const hasPlan = aprilMai.length > 0 || juniJuli.length > 0;
+  const augDez = upcoming(planAugDez);
+  const vereinstermine = upcoming(planVereinstermine);
+  const hasPlan =
+    aprilMai.length > 0 ||
+    juniJuli.length > 0 ||
+    augDez.length > 0 ||
+    vereinstermine.length > 0;
 
   // Ferien: Endedatum als ISO zum Filtern. Nur noch anzeigen solange laufend/zukünftig.
   const holidays = [
@@ -149,6 +184,12 @@ export default function TrainingPage() {
           )}
           {juniJuli.length > 0 && (
             <PlanTable title="Juni – Juli" rows={juniJuli} />
+          )}
+          {augDez.length > 0 && (
+            <PlanTable title="August – Dezember" rows={augDez} />
+          )}
+          {vereinstermine.length > 0 && (
+            <PlanTable title="Vereinstermine" rows={vereinstermine} />
           )}
 
           <p className="mt-8 text-sm text-muted">
@@ -293,9 +334,11 @@ function PlanTable({ title, rows }: { title: string; rows: PlanRow[] }) {
                   ? "bg-amber-50/60"
                   : r.type === "wettkampf"
                     ? "bg-emerald-50/70"
-                    : idx % 2 === 0
-                      ? "bg-white"
-                      : "bg-slate-50/50";
+                    : r.type === "vereinstermin"
+                      ? "bg-violet-50/70"
+                      : idx % 2 === 0
+                        ? "bg-white"
+                        : "bg-slate-50/50";
               return (
                 <tr key={`${r.date}-${idx}`} className={bg}>
                   <td className="px-6 py-3 font-semibold text-ink whitespace-nowrap">
@@ -316,6 +359,11 @@ function PlanTable({ title, rows }: { title: string; rows: PlanRow[] }) {
                         Ferien
                       </span>
                     )}
+                    {r.type === "vereinstermin" && (
+                      <span className="mr-2 inline-flex items-center rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-violet-700">
+                        Vereinstermin
+                      </span>
+                    )}
                     {r.note}
                   </td>
                 </tr>
@@ -333,6 +381,7 @@ function Legend() {
     <div className="flex flex-wrap items-center gap-3 text-xs text-muted">
       <LegendDot color="bg-amber-300" label="Ferien / Spezialtraining" />
       <LegendDot color="bg-emerald-400" label="Wettkampf" />
+      <LegendDot color="bg-violet-400" label="Vereinstermin" />
       <span className="rounded-full bg-slate-100 px-3 py-1 font-semibold text-ink">
         tbd = Trainer noch offen
       </span>
