@@ -192,10 +192,6 @@ export default function HomePage() {
           <h2 className="mt-3 text-3xl font-black tracking-tight text-ink sm:text-4xl">
             Impressionen vom Platz
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted">
-            Keine Stockfotos – echte Bilder aus unseren Mittwoch-Trainings und
-            vom Swisscup. So sieht Velotrial beim VCTL aus.
-          </p>
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
