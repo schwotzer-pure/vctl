@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -11,15 +12,14 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-0 isolate"
           style={{ backgroundColor: "#0a0806" }}
         >
-          {/* Layer A: Video in Graustufen, blendet als "screen" auf den dunklen Sockel */}
-          <video
-            src="/swiss-cup.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            suppressHydrationWarning
-            className="absolute inset-0 h-full w-full object-cover object-center"
+          {/* Layer A: Bild in Graustufen, blendet als "screen" auf den dunklen Sockel */}
+          <Image
+            src="/images/hero-wettkampf.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="absolute inset-0 object-cover object-center"
             style={{
               filter: "grayscale(100%) contrast(1.2)",
               mixBlendMode: "screen",
