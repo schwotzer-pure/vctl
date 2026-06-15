@@ -8,6 +8,8 @@ type PageHeaderProps = {
   image?: {
     src: string;
     alt?: string;
+    /** CSS object-position, z.B. "center 25%" um den Bildausschnitt zu verschieben. Standard: "center" */
+    objectPosition?: string;
   };
   /** Hintergrundvideo im Duotone-Look — überschreibt image wenn gesetzt. */
   video?: {
@@ -62,8 +64,9 @@ export function PageHeader({ kicker, title, subtitle, image, video }: PageHeader
             fill
             priority
             sizes="100vw"
-            className="absolute inset-0 object-cover object-center"
+            className="absolute inset-0 object-cover"
             style={{
+              objectPosition: image.objectPosition ?? "center",
               filter: "grayscale(100%) contrast(1.2)",
               mixBlendMode: "screen",
             }}

@@ -41,7 +41,7 @@ export default function ProbetrainingPage() {
         kicker="Probetraining"
         title="Komm vorbei. Probier's aus."
         subtitle="Velotrial ist das perfekte Balance-Training fürs Velo. Dein erstes Training beim VCTL ist unverbindlich und kostenlos."
-        image={{ src: "/images/hero-probetraining.webp", alt: "Junger VCTL-Fahrer auf dem Velo" }}
+        image={{ src: "/images/hero-kind.webp", alt: "Junger VCTL-Fahrer auf dem Velo" }}
       />
 
       {/* Ablauf */}
