@@ -72,8 +72,6 @@ const planAugDez: PlanRow[] = [
   { date: "Mi, 23.09.", iso: "2026-09-23", kw: "39", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   // Herbstferien: Enddatum als iso, damit der Eintrag bis zum letzten Ferientag sichtbar bleibt.
   { date: "26.09. – 11.10.", iso: "2026-10-11", note: "Herbstferien – Spezialtraining", type: "ferien" },
-  { date: "Mi, 30.09.", iso: "2026-09-30", kw: "40", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
-  { date: "Mi, 07.10.", iso: "2026-10-07", kw: "41", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
   { date: "Mi, 14.10.", iso: "2026-10-14", kw: "42", junioren: "René", jugend: "René", erwachsene: "tbd", note: "Kids- & Jugendtraining zusammengelegt" },
   { date: "Mi, 21.10.", iso: "2026-10-21", kw: "43", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   { date: "Mi, 28.10.", iso: "2026-10-28", kw: "44", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
