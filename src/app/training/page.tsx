@@ -64,8 +64,8 @@ const planJuniJuli: PlanRow[] = [
 // Trainings nach den Sommerferien. Trainerzuteilung aus Debis Plan:
 // "Debi" = Debi ist im Training, "tbd" = Debi weg (z.B. Wettkampf/Camp), Trainer noch offen.
 const planAugDez: PlanRow[] = [
-  { date: "Mi, 19.08.", iso: "2026-08-19", kw: "34", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
-  { date: "Mi, 26.08.", iso: "2026-08-26", kw: "35", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 19.08.", iso: "2026-08-19", kw: "34", junioren: "René", jugend: "René", erwachsene: "tbd", note: "Kids- & Jugendtraining zusammengelegt" },
+  { date: "Mi, 26.08.", iso: "2026-08-26", kw: "35", junioren: "René", jugend: "René", erwachsene: "tbd", note: "Kids- & Jugendtraining zusammengelegt" },
   { date: "Mi, 02.09.", iso: "2026-09-02", kw: "36", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   { date: "Mi, 09.09.", iso: "2026-09-09", kw: "37", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   { date: "Mi, 16.09.", iso: "2026-09-16", kw: "38", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
@@ -74,12 +74,12 @@ const planAugDez: PlanRow[] = [
   { date: "26.09. – 11.10.", iso: "2026-10-11", note: "Herbstferien – Spezialtraining", type: "ferien" },
   { date: "Mi, 30.09.", iso: "2026-09-30", kw: "40", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   { date: "Mi, 07.10.", iso: "2026-10-07", kw: "41", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
-  { date: "Mi, 14.10.", iso: "2026-10-14", kw: "42", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 14.10.", iso: "2026-10-14", kw: "42", junioren: "René", jugend: "René", erwachsene: "tbd", note: "Kids- & Jugendtraining zusammengelegt" },
   { date: "Mi, 21.10.", iso: "2026-10-21", kw: "43", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   { date: "Mi, 28.10.", iso: "2026-10-28", kw: "44", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
-  { date: "Mi, 04.11.", iso: "2026-11-04", kw: "45", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 04.11.", iso: "2026-11-04", kw: "45", junioren: "René", jugend: "René", erwachsene: "tbd", note: "Kids- & Jugendtraining zusammengelegt" },
   { date: "Mi, 11.11.", iso: "2026-11-11", kw: "46", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
-  { date: "Mi, 18.11.", iso: "2026-11-18", kw: "47", junioren: "tbd", jugend: "tbd", erwachsene: "tbd" },
+  { date: "Mi, 18.11.", iso: "2026-11-18", kw: "47", junioren: "René", jugend: "René", erwachsene: "tbd", note: "Kids- & Jugendtraining zusammengelegt" },
   { date: "Mi, 25.11.", iso: "2026-11-25", kw: "48", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   { date: "Mi, 02.12.", iso: "2026-12-02", kw: "49", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
   { date: "Mi, 09.12.", iso: "2026-12-09", kw: "50", junioren: "Debi", jugend: "Debi", erwachsene: "Debi" },
