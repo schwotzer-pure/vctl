@@ -57,7 +57,7 @@ export async function submitMitgliedschaft(
 
   if (!process.env.RESEND_API_KEY) {
     console.error("Mitgliedschaft: RESEND_API_KEY is not set");
-    return { error: "Versand vorübergehend nicht möglich. Bitte melde dich direkt bei mitglieder@vctl.ch." };
+    return { error: "Versand vorübergehend nicht möglich. Bitte melde dich direkt bei mitglieder@snakebite-vtcl.ch." };
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -65,7 +65,7 @@ export async function submitMitgliedschaft(
   let resendError: unknown = null;
   try {
     const result = await resend.emails.send({
-    from: "VCTL Mitgliedschaft <onboarding@resend.dev>",
+    from: "VTCL Mitgliedschaft <onboarding@resend.dev>",
     to: "christian.schwotzer@hellopure.io",
     replyTo: email,
     subject: `Mitgliedschafts-Anmeldung (${category}): ${firstName} ${lastName}`,
@@ -73,7 +73,7 @@ export async function submitMitgliedschaft(
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a">
         <div style="background:#fb923c;padding:32px 40px;border-radius:16px 16px 0 0">
           <h1 style="margin:0;color:#fff;font-size:22px;font-weight:800">Neue Mitgliedschafts-Anmeldung</h1>
-          <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">VCTL – Velo- &amp; Trial Club Luzern</p>
+          <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">VTCL – Velo- &amp; Trial Club Luzern</p>
         </div>
         <div style="background:#fff;padding:32px 40px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px">
           <table style="width:100%;border-collapse:collapse;font-size:15px">
@@ -124,12 +124,12 @@ export async function submitMitgliedschaft(
     resendError = result.error;
   } catch (err) {
     console.error("Mitgliedschaft: Resend threw:", err);
-    return { error: "Versand fehlgeschlagen. Bitte versuch es später nochmals oder schreib uns an mitglieder@vctl.ch." };
+    return { error: "Versand fehlgeschlagen. Bitte versuch es später nochmals oder schreib uns an mitglieder@snakebite-vtcl.ch." };
   }
 
   if (resendError) {
     console.error("Mitgliedschaft: Resend error:", resendError);
-    return { error: "Versand fehlgeschlagen. Bitte versuch es später nochmals oder schreib uns an mitglieder@vctl.ch." };
+    return { error: "Versand fehlgeschlagen. Bitte versuch es später nochmals oder schreib uns an mitglieder@snakebite-vtcl.ch." };
   }
 
   return { success: true };

@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "VCTL – Velo- & Trial Club Luzern",
-    template: "%s · VCTL",
+    default: "VTCL – Velo- & Trial Club Luzern",
+    template: "%s · VTCL",
   },
   description:
     "Velo- & Trial Club Luzern – Trainings am Trialplatz Luzern, Swisscup Wettkämpfe und Nachwuchsförderung.",

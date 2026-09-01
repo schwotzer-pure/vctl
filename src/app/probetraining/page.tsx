@@ -4,7 +4,7 @@ import { ProbetrainingForm } from "./ProbetrainingForm";
 export const metadata = {
   title: "Probetraining",
   description:
-    "Unverbindlich Velotrial ausprobieren: Der VCTL heisst Einsteiger*innen jeden Mittwoch am Trialplatz Luzern willkommen.",
+    "Unverbindlich Velotrial ausprobieren: Der VTCL heisst Einsteiger*innen jeden Mittwoch am Trialplatz Luzern willkommen.",
 };
 
 const groups = [
@@ -40,7 +40,7 @@ export default function ProbetrainingPage() {
       <PageHeader
         kicker="Probetraining"
         title="Komm vorbei. Probier's aus."
-        subtitle="Velotrial ist das perfekte Balance-Training fürs Velo. Dein erstes Training beim VCTL ist unverbindlich und kostenlos."
+        subtitle="Velotrial ist das perfekte Balance-Training fürs Velo. Dein erstes Training beim VTCL ist unverbindlich und kostenlos."
         video={{ src: "/probetraining.mp4" }}
       />
 

@@ -1,4 +1,4 @@
--- VCTL Initial Schema (Phase 2.1 Fundament)
+-- VTCL Initial Schema (Phase 2.1 Fundament)
 -- Siehe Memory: project_vctl_datenmodell.md
 
 -- ============================================================================

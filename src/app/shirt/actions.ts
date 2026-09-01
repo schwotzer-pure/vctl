@@ -45,7 +45,7 @@ export async function submitShirtBestellung(
 
   if (!sheetOk && !emailOk) {
     return {
-      error: "Versand fehlgeschlagen. Bitte später nochmals versuchen oder direkt bei mitglieder@vctl.ch melden.",
+      error: "Versand fehlgeschlagen. Bitte später nochmals versuchen oder direkt bei mitglieder@snakebite-vtcl.ch melden.",
     };
   }
 
@@ -104,14 +104,14 @@ async function sendEmail(payload: {
 
   try {
     const result = await resend.emails.send({
-      from: "VCTL Shirt <onboarding@resend.dev>",
+      from: "VTCL Shirt <onboarding@resend.dev>",
       to: SHIRT_RECIPIENT,
       subject: `Shirt-Nachbestellung: ${payload.firstName} ${payload.lastName} (${payload.sizeLabel})`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a">
           <div style="background:#fb923c;padding:32px 40px;border-radius:16px 16px 0 0">
             <h1 style="margin:0;color:#fff;font-size:22px;font-weight:800">Neue Shirt-Nachbestellung</h1>
-            <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">VCTL – Velo- &amp; Trial Club Luzern</p>
+            <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">VTCL – Velo- &amp; Trial Club Luzern</p>
           </div>
           <div style="background:#fff;padding:32px 40px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px">
             <table style="width:100%;border-collapse:collapse;font-size:15px">

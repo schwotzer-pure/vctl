@@ -159,7 +159,7 @@ function Logo({ light }: { light: boolean }) {
       >
         <Image
           src="/logo.png"
-          alt="VCTL Logo"
+          alt="VTCL Logo"
           width={40}
           height={40}
           className="h-9 w-9 object-contain"
@@ -169,7 +169,7 @@ function Logo({ light }: { light: boolean }) {
 
       <span className="flex flex-col leading-none">
         <span className="text-lg font-black tracking-tight">
-          VCTL
+          VTCL
           <span className={light ? "text-white/60" : "text-brand-600"}>.</span>
         </span>
         <span

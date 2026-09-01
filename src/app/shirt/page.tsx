@@ -3,7 +3,7 @@ import { ShirtForm } from "./ShirtForm";
 
 export const metadata = {
   title: "Shirt-Nachbestellung",
-  description: "Trag deine Shirtgrösse für die nächste VCTL-Bestellung ein.",
+  description: "Trag deine Shirtgrösse für die nächste VTCL-Bestellung ein.",
   robots: { index: false, follow: false },
 };
 

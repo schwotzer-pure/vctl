@@ -89,7 +89,7 @@ export function MitgliedschaftForm() {
         Anmeldung
       </span>
       <h2 className="mt-2 text-2xl font-black tracking-tight text-ink">
-        Werde Mitglied beim VCTL
+        Werde Mitglied beim VTCL
       </h2>
       <p className="mt-2 text-sm text-muted">
         Wähle deine Kategorie und schick uns deine Daten – wir melden uns mit Rechnung und allen weiteren Infos.
@@ -146,8 +146,8 @@ export function MitgliedschaftForm() {
             Für Mitglieder unter 20 Jahren benötigen wir die unterzeichnete Anmeldung
             der Eltern bzw. Erziehungsberechtigten. Bitte lade das PDF herunter, fülle
             es aus und sende es per Mail an{" "}
-            <a href="mailto:mitglieder@vctl.ch" className="font-semibold text-brand-700 hover:underline">
-              mitglieder@vctl.ch
+            <a href="mailto:mitglieder@snakebite-vtcl.ch" className="font-semibold text-brand-700 hover:underline">
+              mitglieder@snakebite-vtcl.ch
             </a>.
           </p>
           <a

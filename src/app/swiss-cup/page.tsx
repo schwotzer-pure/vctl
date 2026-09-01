@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Swisscup 2026",
   description:
-    "Swisscup Wettkampftermine 2026 – der VCTL ist an den nationalen Trial-Wettkämpfen dabei.",
+    "Swisscup Wettkampftermine 2026 – der VTCL ist an den nationalen Trial-Wettkämpfen dabei.",
 };
 
 type Race = {
@@ -57,7 +57,7 @@ export default function SwissCupPage() {
       <PageHeader
         kicker="Swisscup 2026"
         title="Sechs Wettkämpfe. Eine Saison."
-        subtitle="Vom Tessin bis in den Aargau: Der Swisscup bringt die Trial-Community schweizweit zusammen. Der VCTL ist dabei."
+        subtitle="Vom Tessin bis in den Aargau: Der Swisscup bringt die Trial-Community schweizweit zusammen. Der VTCL ist dabei."
         video={{ src: "/hero.mp4", objectPosition: "center 30%" }}
       />
 
