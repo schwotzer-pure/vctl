@@ -137,7 +137,7 @@ export default function HomePage() {
               <span className="text-gradient-brand">Balance lieben</span>.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted">
-              Der Velo- & Trial Club Luzern (VCTL) fördert Velotrial vom
+              Der Velo- & Trial Club Luzern (VTCL) fördert Velotrial vom
               Einstieg bis zur Wettkampfebene. Wir setzen auf geregelte
               Trainings, eine starke Nachwuchsförderung und ein aktives
               Vereinsleben.
@@ -197,16 +197,16 @@ export default function HomePage() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <GalleryPhoto
             src="/images/foto-kind.webp"
-            alt="Junger VCTL-Fahrer konzentriert auf dem Trialbike"
+            alt="Junger VTCL-Fahrer konzentriert auf dem Trialbike"
             priority
           />
           <GalleryPhoto
             src="/images/foto-trial.webp"
-            alt="VCTL-Fahrer balanciert im Trial-Parcours"
+            alt="VTCL-Fahrer balanciert im Trial-Parcours"
           />
           <GalleryPhoto
             src="/images/foto-sprung.webp"
-            alt="VCTL-Fahrer springt über ein Hindernis"
+            alt="VTCL-Fahrer springt über ein Hindernis"
           />
         </div>
       </section>

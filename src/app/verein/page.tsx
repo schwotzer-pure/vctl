@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 const vorstand = [
-  { role: "Präsident", name: "Christian Arnosti", email: "praesident@vctl.ch" },
+  { role: "Präsident", name: "Christian Arnosti", email: "praesident@snakebite-vtcl.ch" },
   { role: "Sportkommissär / Haupttrainer", name: "Debi Studer", email: "" },
   { role: "Kassier", name: "Chantal Häfliger", email: "" },
   { role: "Webmaster / Mitgliederverwaltung", name: "Daniel Wenger", email: "" },
@@ -34,7 +34,7 @@ const memberships = [
   {
     key: "GÖNNER",
     price: "CHF 100",
-    desc: "Unterstützungsmitgliedschaft für alle, die den VCTL fördern möchten, ohne aktiv teilzunehmen.",
+    desc: "Unterstützungsmitgliedschaft für alle, die den VTCL fördern möchten, ohne aktiv teilzunehmen.",
   },
   {
     key: "PASSIV",
@@ -53,9 +53,9 @@ export default function VereinPage() {
     <>
       <PageHeader
         kicker="Verein"
-        title="Der VCTL. Wer wir sind."
+        title="Der VTCL. Wer wir sind."
         subtitle="Gegründet 2012, fördern wir Velotrial im Freizeit- und Wettkampfbereich – mit Freude am Sport und am Miteinander."
-        image={{ src: "/images/trainingsplatz.jpg", alt: "Trainingsplatz VCTL Luzern" }}
+        image={{ src: "/images/trainingsplatz.jpg", alt: "Trainingsplatz VTCL Luzern" }}
       />
 
       {/* Über den Verein */}
@@ -69,7 +69,7 @@ export default function VereinPage() {
               Velotrial für alle.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted">
-              Der Velo- & Trial Club Luzern (VCTL) wurde 2012 gegründet und
+              Der Velo- & Trial Club Luzern (VTCL) wurde 2012 gegründet und
               fördert Velotrial auf allen Niveaus – vom ersten Probetraining bis
               zum Swisscup. Wir trainieren jeden Mittwoch am Trialplatz Luzern
               in strukturierten Gruppen für Junioren, Jugend und Erwachsene.
@@ -142,7 +142,7 @@ export default function VereinPage() {
             Mitglied werden
           </span>
           <h2 className="mt-2 text-3xl font-black tracking-tight text-ink">
-            Werde Teil des VCTL.
+            Werde Teil des VTCL.
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-muted">
             Als Mitglied profitierst du von geführtem Training, aktivem

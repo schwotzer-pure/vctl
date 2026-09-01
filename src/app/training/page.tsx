@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Training",
   description:
-    "Trainingszeiten, Gruppen, Trainer und Ferienregelung des VCTL am Trialplatz Luzern.",
+    "Trainingszeiten, Gruppen, Trainer und Ferienregelung des VTCL am Trialplatz Luzern.",
 };
 
 type Session = {

@@ -33,7 +33,7 @@ export async function submitProbetraining(
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   const { error } = await resend.emails.send({
-    from: "VCTL Probetraining <onboarding@resend.dev>",
+    from: "VTCL Probetraining <onboarding@resend.dev>",
     to: "christian.schwotzer@hellopure.io",
     replyTo: email,
     subject: `Probetraining-Anmeldung: ${firstName} ${lastName}`,
@@ -41,7 +41,7 @@ export async function submitProbetraining(
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a">
         <div style="background:#fb923c;padding:32px 40px;border-radius:16px 16px 0 0">
           <h1 style="margin:0;color:#fff;font-size:22px;font-weight:800">Neue Probetraining-Anmeldung</h1>
-          <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">VCTL – Velo- &amp; Trial Club Luzern</p>
+          <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">VTCL – Velo- &amp; Trial Club Luzern</p>
         </div>
         <div style="background:#fff;padding:32px 40px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 16px 16px">
           <table style="width:100%;border-collapse:collapse;font-size:15px">
