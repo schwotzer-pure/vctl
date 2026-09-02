@@ -5,8 +5,7 @@ import { submitMitgliedschaft, type FormState } from "./actions";
 
 const initialState: FormState = {};
 
-const JUNIOR_PDF_URL =
-  "https://app.clubdesk.com/clubdesk/m_30880/fileservlet?id=1000108&s=djEtmj3QiEbvXdJmcIGHityfTWk-HepMwWVulzUqu4qEZ-4=";
+const JUNIOR_PDF_URL = "/anmeldung-jugendmitglieder.pdf";
 
 const STATUTEN_URL =
   "https://app.clubdesk.com/clubdesk/m_30880/fileservlet?id=1000198&s=djEtH5HdwgkJSvYl7sSE5BPgheuusr6muQZ6sv5NIJlGNw4=";
@@ -136,32 +135,66 @@ export function MitgliedschaftForm() {
         </div>
       </fieldset>
 
-      {/* Junior: PDF download instead of online form */}
+      {/* Junior: Anmeldeformular direkt eingebettet statt Download-Link */}
       {isJunior && (
         <div className="mt-6 rounded-2xl bg-amber-50 p-6 ring-1 ring-amber-200">
           <p className="text-sm font-bold text-ink">
-            Anmeldung Jugendmitglieder via PDF
+            Anmeldung Jugendmitglieder
           </p>
           <p className="mt-2 text-sm leading-relaxed text-muted">
             Für Mitglieder unter 20 Jahren benötigen wir die unterzeichnete Anmeldung
-            der Eltern bzw. Erziehungsberechtigten. Bitte lade das PDF herunter, fülle
-            es aus und sende es per Mail an{" "}
+            der Eltern bzw. Erziehungsberechtigten. Das Formular findest du direkt hier –
+            ausdrucken, ausfüllen, unterschreiben und per Mail an{" "}
             <a href="mailto:mitglieder@snakebite-vtcl.ch" className="font-semibold text-brand-700 hover:underline">
               mitglieder@snakebite-vtcl.ch
-            </a>.
+            </a>{" "}
+            senden. Ein Foto des ausgefüllten Talons genügt.
           </p>
+
+          <div className="mt-5 overflow-hidden rounded-xl bg-white ring-1 ring-amber-200">
+            <object
+              data={`${JUNIOR_PDF_URL}#view=FitH`}
+              type="application/pdf"
+              aria-label="Anmeldeformular für Jugendmitglieder"
+              className="hidden h-[75vh] max-h-[900px] min-h-[560px] w-full sm:block"
+            >
+              <p className="p-6 text-sm leading-relaxed text-muted">
+                Dein Browser kann PDFs nicht direkt anzeigen.{" "}
+                <a
+                  href={JUNIOR_PDF_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-brand-700 hover:underline"
+                >
+                  Anmeldeformular in neuem Tab öffnen
+                </a>
+              </p>
+            </object>
+            <p className="p-6 text-sm leading-relaxed text-muted sm:hidden">
+              Auf dem Handy öffnest du das Formular am besten direkt:{" "}
+              <a
+                href={JUNIOR_PDF_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-brand-700 hover:underline"
+              >
+                Anmeldeformular öffnen
+              </a>
+            </p>
+          </div>
+
           <a
             href={JUNIOR_PDF_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-700"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 transition hover:text-brand-800 hover:underline"
           >
             <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
+              <polyline points="6 9 6 2 18 2 18 9" />
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+              <rect x="6" y="14" width="12" height="8" />
             </svg>
-            PDF herunterladen
+            Formular in neuem Tab öffnen & ausdrucken
           </a>
         </div>
       )}
