@@ -12,7 +12,7 @@ export const metadata = {
 
 // Eckdaten des Abends – hier anpassen, sobald Datum und Ort fix sind.
 const EVENT = {
-  datum: "Datum folgt",
+  datum: "Mittwoch, 2. Dezember 2026",
   zeit: "ab 18:00 Uhr",
   ort: "Trialplatz Luzern",
   hinweis: "Warm anziehen – wir sind draussen am Feuer.",
