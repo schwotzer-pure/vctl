@@ -2,7 +2,7 @@
 
 import { useActionState } from "react";
 import { submitGluehweinAnmeldung, type FormState } from "./actions";
-import { MITBRINGSEL, type MitbringselKey, type Stats } from "./data";
+import { MITBRINGSEL, type MitbringselKey, type Stats } from "./constants";
 
 const initialState: FormState = {};
 

@@ -1,65 +1,25 @@
-import { createServiceRoleClient } from "@/lib/supabase/service-role";
+// Nur serverseitig verwenden (zieht den Datenbank-Treiber mit).
+import { fetchAnmeldungRows, storageBackend } from "./storage";
+import { EMPTY_STATS, MITBRINGSEL, type Stats } from "./constants";
 
-export const MITBRINGSEL = [
-  {
-    key: "gluehwein",
-    column: "bringt_gluehwein",
-    label: "Ich nehme Glühwein mit",
-    hint: "Rot oder weiss, gerne selbst gewürzt.",
-  },
-  {
-    key: "knabbereien",
-    column: "bringt_knabbereien",
-    label: "Ich nehme etwas zu knabbern mit",
-    hint: "Guetzli, Nüsse, Chips, Lebkuchen, alles willkommen.",
-  },
-  {
-    key: "alkoholfrei",
-    column: "bringt_alkoholfrei",
-    label: "Ich nehme ein alkoholfreies Getränk mit",
-    hint: "Punsch, Tee oder Süssmost für Kinder und Fahrende.",
-  },
-] as const;
-
-export type MitbringselKey = (typeof MITBRINGSEL)[number]["key"];
-
-export type Stats = {
-  /** Anzahl abgegebener Anmeldungen */
-  anmeldungen: number;
-  /** Summe der angemeldeten Personen */
-  personen: number;
-  /** Wie viele Anmeldungen das jeweilige Mitbringsel gewählt haben */
-  mitbringsel: Record<MitbringselKey, number>;
-};
-
-export const EMPTY_STATS: Stats = {
-  anmeldungen: 0,
-  personen: 0,
-  mitbringsel: { gluehwein: 0, knabbereien: 0, alkoholfrei: 0 },
-};
-
-export function isSupabaseConfigured(): boolean {
-  return Boolean(
-    process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY,
-  );
+export function isStorageConfigured(): boolean {
+  return storageBackend() !== null;
 }
 
 /**
  * Liest die anonymen Zähler (nur Anzahlen, keine Namen). Läuft ausschliesslich
- * serverseitig mit dem Service-Role-Key.
+ * serverseitig, egal ob Neon/Postgres oder Supabase dahintersteht.
  */
 export async function loadStats(): Promise<Stats> {
-  if (!isSupabaseConfigured()) {
-    console.warn("Glühwein: Supabase ist nicht konfiguriert, Zähler bleiben leer.");
+  if (!isStorageConfigured()) {
+    console.warn("Glühwein: kein Speicher-Backend konfiguriert, Zähler bleiben leer.");
     return EMPTY_STATS;
   }
 
-  const supabase = createServiceRoleClient();
-  const { data, error } = await supabase
-    .from("gluehwein_anmeldungen")
-    .select("anzahl_personen, bringt_gluehwein, bringt_knabbereien, bringt_alkoholfrei");
-
-  if (error || !data) {
+  let data;
+  try {
+    data = await fetchAnmeldungRows();
+  } catch (error) {
     console.error("Glühwein: Zähler konnten nicht geladen werden:", error);
     return EMPTY_STATS;
   }
