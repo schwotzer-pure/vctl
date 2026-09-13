@@ -1,14 +1,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createServiceRoleClient } from "@/lib/supabase/service-role";
-import {
-  MITBRINGSEL,
-  isSupabaseConfigured,
-  loadStats,
-  type MitbringselKey,
-  type Stats,
-} from "./data";
+import { insertAnmeldung } from "./storage";
+import { MITBRINGSEL, type MitbringselKey, type Stats } from "./constants";
+import { isStorageConfigured, loadStats } from "./data";
 
 export type FormState = {
   success?: boolean;
@@ -47,25 +42,24 @@ export async function submitGluehweinAnmeldung(
     (o) => o.key,
   );
 
-  if (!isSupabaseConfigured()) {
-    console.error("Glühwein: Supabase ist nicht konfiguriert, Anmeldung verworfen.");
+  if (!isStorageConfigured()) {
+    console.error("Glühwein: kein Speicher-Backend konfiguriert, Anmeldung verworfen.");
     return {
       error:
         "Die Anmeldung kann gerade nicht gespeichert werden. Bitte später nochmals versuchen.",
     };
   }
 
-  const supabase = createServiceRoleClient();
-  const { error } = await supabase.from("gluehwein_anmeldungen").insert({
-    vorname,
-    nachname,
-    anzahl_personen: personen,
-    bringt_gluehwein: chosen.includes("gluehwein"),
-    bringt_knabbereien: chosen.includes("knabbereien"),
-    bringt_alkoholfrei: chosen.includes("alkoholfrei"),
-  });
-
-  if (error) {
+  try {
+    await insertAnmeldung({
+      vorname,
+      nachname,
+      anzahl_personen: personen,
+      bringt_gluehwein: chosen.includes("gluehwein"),
+      bringt_knabbereien: chosen.includes("knabbereien"),
+      bringt_alkoholfrei: chosen.includes("alkoholfrei"),
+    });
+  } catch (error) {
     console.error("Glühwein: Insert fehlgeschlagen:", error);
     return {
       error:
