@@ -13,7 +13,7 @@ import {
 export type FormState = {
   success?: boolean;
   error?: string;
-  /** Aktuelle Zähler nach dem Eintrag – damit die Danke-Ansicht live ist. */
+  /** Aktuelle Zähler nach dem Eintrag, damit die Danke-Ansicht live ist. */
   stats?: Stats;
   /** Was die Person selbst angekreuzt hat. */
   chosen?: MitbringselKey[];
@@ -33,7 +33,7 @@ export async function submitGluehweinAnmeldung(
     return { error: "Bitte Vorname und Name ausfüllen." };
   }
   if (vorname.length > 80 || nachname.length > 80) {
-    return { error: "Der Name ist etwas gar lang – bitte kürzen." };
+    return { error: "Der Name ist etwas gar lang, bitte kürzen." };
   }
 
   const personen = Number.parseInt(personenRaw, 10);

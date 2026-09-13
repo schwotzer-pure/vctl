@@ -11,7 +11,7 @@ export const MITBRINGSEL = [
     key: "knabbereien",
     column: "bringt_knabbereien",
     label: "Ich nehme etwas zu knabbern mit",
-    hint: "Guetzli, Nüsse, Chips, Lebkuchen – alles willkommen.",
+    hint: "Guetzli, Nüsse, Chips, Lebkuchen, alles willkommen.",
   },
   {
     key: "alkoholfrei",
