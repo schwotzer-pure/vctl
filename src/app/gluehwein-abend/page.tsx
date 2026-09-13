@@ -6,16 +6,16 @@ export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Glühwein-Abend",
   description:
-    "Melde dich für den VTCL Glühwein-Abend an – gemütlich, warm und mit der ganzen Trial-Familie.",
+    "Melde dich für den VTCL Glühwein-Abend an. Gemütlich, warm und mit der ganzen Trial-Familie.",
   robots: { index: false, follow: false },
 };
 
-// Eckdaten des Abends – hier anpassen, sobald Datum und Ort fix sind.
+// Eckdaten des Abends. Hier anpassen, sobald Datum und Ort fix sind.
 const EVENT = {
-  datum: "Datum folgt",
+  datum: "Mittwoch, 2. Dezember 2026",
   zeit: "ab 18:00 Uhr",
   ort: "Trialplatz Luzern",
-  hinweis: "Warm anziehen – wir sind draussen am Feuer.",
+  hinweis: "Warm anziehen, wir sind draussen am Feuer.",
 };
 
 export default async function GluehweinAbendPage() {
@@ -51,7 +51,7 @@ export default async function GluehweinAbendPage() {
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
               Ein gemütlicher Abend für die ganze Trial-Familie: heisser Glühwein,
               Kinderpunsch, etwas zu knabbern und viel Zeit zum Plaudern. Bring mit,
-              wen du magst – und sag uns kurz, ob du dabei bist.
+              wen du magst, und sag uns kurz, ob du dabei bist.
             </p>
 
             <dl className="mt-10 grid gap-3 sm:grid-cols-3">
@@ -71,7 +71,7 @@ export default async function GluehweinAbendPage() {
               <span className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white/85 ring-1 ring-white/25">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_2px_rgba(52,211,153,0.7)]" />
                 {stats.personen === 0
-                  ? "Noch keine Zusagen – sei die erste!"
+                  ? "Noch keine Zusagen. Sei die erste!"
                   : `Bereits ${stats.personen} ${stats.personen === 1 ? "Person" : "Personen"} dabei`}
               </span>
             </div>
@@ -92,7 +92,7 @@ export default async function GluehweinAbendPage() {
           <GluehweinForm stats={stats} />
           <p className="mt-6 text-center text-xs text-white/60">
             Wir speichern nur Name und Personenzahl für die Planung. Die Zähler bei den
-            Mitbringseln sind anonym – niemand sieht, wer was mitnimmt.
+            Mitbringseln sind anonym. Niemand sieht, wer was mitnimmt.
           </p>
         </div>
       </section>
@@ -124,7 +124,7 @@ function InfoTile({
   );
 }
 
-/** Deterministische Schneeflocken – kein Math.random, damit Server und Client übereinstimmen. */
+/** Deterministische Schneeflocken ohne Math.random, damit Server und Client übereinstimmen. */
 function Schnee() {
   const flakes = Array.from({ length: 36 }, (_, i) => {
     const left = (i * 37 + 11) % 100;

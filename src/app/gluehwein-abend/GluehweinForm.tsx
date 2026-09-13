@@ -57,7 +57,7 @@ export function GluehweinForm({ stats }: Props) {
             required
             className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
           />
-          <p className="mt-1.5 text-xs text-muted">Dich selbst mitgezählt – Kinder ebenfalls.</p>
+          <p className="mt-1.5 text-xs text-muted">Dich selbst mitgezählt, Kinder ebenfalls.</p>
         </div>
       </div>
 
