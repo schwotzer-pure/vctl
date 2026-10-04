@@ -7,6 +7,14 @@ export type FormState = {
   error?: string;
 };
 
+// Resend-Sandbox (onboarding@resend.dev) liefert nur an die Account-Owner-Adresse.
+// Darum verschicken wir pro Empfänger eine eigene Mail: Scheitert der Versand an
+// eine Adresse, kommt die Anmeldung trotzdem bei den anderen an.
+const RECIPIENTS = [
+  "christian.schwotzer@hellopure.io",
+  "debi.studer@x-fighter.ch",
+];
+
 const groupLabels: Record<string, string> = {
   junioren: "Kinder (6–11 Jahre)",
   jugend: "Jugend (12–17 Jahre)",
@@ -32,12 +40,8 @@ export async function submitProbetraining(
 
   const resend = new Resend(process.env.RESEND_API_KEY);
 
-  const { error } = await resend.emails.send({
-    from: "VTCL Probetraining <onboarding@resend.dev>",
-    to: "christian.schwotzer@hellopure.io",
-    replyTo: email,
-    subject: `Probetraining-Anmeldung: ${firstName} ${lastName}`,
-    html: `
+  const subject = `Probetraining-Anmeldung: ${firstName} ${lastName}`;
+  const html = `
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a">
         <div style="background:#fb923c;padding:32px 40px;border-radius:16px 16px 0 0">
           <h1 style="margin:0;color:#fff;font-size:22px;font-weight:800">Neue Probetraining-Anmeldung</h1>
@@ -75,11 +79,25 @@ export async function submitProbetraining(
           </div>
         </div>
       </div>
-    `,
+    `;
+
+  const results = await Promise.all(
+    RECIPIENTS.map((to) =>
+      resend.emails.send({
+        from: "VTCL Probetraining <onboarding@resend.dev>",
+        to,
+        replyTo: email,
+        subject,
+        html,
+      })
+    )
+  );
+
+  results.forEach((r, i) => {
+    if (r.error) console.error("Resend error:", RECIPIENTS[i], r.error);
   });
 
-  if (error) {
-    console.error("Resend error:", error);
+  if (results.every((r) => r.error)) {
     return { error: "Versand fehlgeschlagen. Bitte versuch es später nochmals." };
   }
 
