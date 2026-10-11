@@ -7,14 +7,6 @@ export type FormState = {
   error?: string;
 };
 
-// Resend-Sandbox (onboarding@resend.dev) liefert nur an die Account-Owner-Adresse.
-// Darum verschicken wir pro Empfänger eine eigene Mail: Scheitert der Versand an
-// eine Adresse, kommt die Anmeldung trotzdem bei den anderen an.
-const RECIPIENTS = [
-  "christian.schwotzer@hellopure.io",
-  "debi.studer@x-fighter.ch",
-];
-
 const groupLabels: Record<string, string> = {
   junioren: "Kinder (6–11 Jahre)",
   jugend: "Jugend (12–17 Jahre)",
@@ -38,9 +30,16 @@ export async function submitProbetraining(
     return { error: "Bitte fülle Vorname, Nachname und E-Mail aus." };
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
-
+  const groupLabel = groupLabels[group] ?? group ?? "–";
   const subject = `Probetraining-Anmeldung: ${firstName} ${lastName}`;
+  const text = [
+    `Name: ${firstName} ${lastName}`,
+    `E-Mail: ${email}`,
+    `Telefon: ${phone || "–"}`,
+    `Alter: ${age ? age + " Jahre" : "–"}`,
+    `Gruppe: ${groupLabel}`,
+    `Nachricht: ${message || "–"}`,
+  ].join("\n");
   const html = `
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1a1a1a">
         <div style="background:#fb923c;padding:32px 40px;border-radius:16px 16px 0 0">
@@ -67,7 +66,7 @@ export async function submitProbetraining(
             </tr>
             <tr style="border-bottom:1px solid #f1f5f9">
               <td style="padding:12px 0;color:#64748b;font-weight:600">Gruppe</td>
-              <td style="padding:12px 0">${groupLabels[group] ?? group ?? "–"}</td>
+              <td style="padding:12px 0">${groupLabel}</td>
             </tr>
             <tr>
               <td style="padding:12px 0;color:#64748b;font-weight:600;vertical-align:top">Nachricht</td>
@@ -81,25 +80,82 @@ export async function submitProbetraining(
       </div>
     `;
 
-  const results = await Promise.all(
-    RECIPIENTS.map((to) =>
-      resend.emails.send({
-        from: "VTCL Probetraining <onboarding@resend.dev>",
-        to,
-        replyTo: email,
-        subject,
-        html,
-      })
-    )
-  );
+  const mail = { subject, html, text, replyTo: email };
 
-  results.forEach((r, i) => {
-    if (r.error) console.error("Resend error:", RECIPIENTS[i], r.error);
-  });
+  // Apps Script liefert an Debi, Resend an Christian. Erfolg wenn mindestens
+  // einer durchgeht, damit keine Anmeldung verloren geht.
+  const [webhookOk, resendOk] = await Promise.all([
+    sendViaWebhook(mail),
+    sendViaResend(mail),
+  ]);
 
-  if (results.every((r) => r.error)) {
+  if (!webhookOk && !resendOk) {
     return { error: "Versand fehlgeschlagen. Bitte versuch es später nochmals." };
   }
 
   return { success: true };
+}
+
+type Mail = { subject: string; html: string; text: string; replyTo: string };
+
+// --- Google Apps Script Webhook (apps-script/probetraining.gs) -------------
+
+async function sendViaWebhook(mail: Mail): Promise<boolean> {
+  const url = process.env.PROBETRAINING_WEBHOOK_URL;
+  if (!url) {
+    console.warn("Probetraining: PROBETRAINING_WEBHOOK_URL is not set, skipping webhook");
+    return false;
+  }
+
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(mail),
+      // Apps Script darf bis ~5s brauchen, also kein zu enges Limit.
+      signal: AbortSignal.timeout(10_000),
+    });
+    // Apps Script antwortet auch bei Fehlern mit HTTP 200, darum den Body prüfen.
+    const body = await res.text();
+    let ok = false;
+    try {
+      ok = JSON.parse(body).ok === true;
+    } catch {}
+    if (!res.ok || !ok) {
+      console.error("Probetraining: Webhook failed", res.status, body.slice(0, 500));
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Probetraining: Webhook threw:", err);
+    return false;
+  }
+}
+
+// --- Resend ----------------------------------------------------------------
+
+// Resend-Sandbox (onboarding@resend.dev) liefert nur an die Account-Owner-Adresse.
+async function sendViaResend(mail: Mail): Promise<boolean> {
+  if (!process.env.RESEND_API_KEY) {
+    console.error("Probetraining: RESEND_API_KEY is not set");
+    return false;
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  try {
+    const { error } = await resend.emails.send({
+      from: "VTCL Probetraining <onboarding@resend.dev>",
+      to: "christian.schwotzer@hellopure.io",
+      ...mail,
+    });
+    if (error) {
+      console.error("Probetraining: Resend error:", error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Probetraining: Resend threw:", err);
+    return false;
+  }
 }
