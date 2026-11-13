@@ -13,9 +13,10 @@ export const metadata = {
 // Eckdaten des Abends. Hier anpassen, sobald Datum und Ort fix sind.
 const EVENT = {
   datum: "Mittwoch, 2. Dezember 2026",
-  zeit: "ab 18:00 Uhr",
+  zeit: "ab 17:00 Uhr",
   ort: "Trialplatz Luzern",
   hinweis: "Warm anziehen, wir sind draussen am Feuer.",
+  geissel: "Wer eine Geissel hat, nimmt sie mit.",
 };
 
 export default async function GluehweinAbendPage() {
@@ -50,8 +51,8 @@ export default async function GluehweinAbendPage() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
               Ein gemütlicher Abend für die ganze Trial-Familie: heisser Glühwein,
-              Kinderpunsch, etwas zu knabbern und viel Zeit zum Plaudern. Bring mit,
-              wen du magst, und sag uns kurz, ob du dabei bist.
+              Punsch, Lebkuchen, etwas zu knabbern und viel Zeit zum Plaudern. Bring
+              mit, wen du magst, und sag uns kurz, ob du dabei bist.
             </p>
 
             <dl className="mt-10 grid gap-3 sm:grid-cols-3">
@@ -60,6 +61,10 @@ export default async function GluehweinAbendPage() {
               <InfoTile icon={<PinIcon />} label="Wo" value={EVENT.ort} />
             </dl>
             <p className="mt-4 text-sm text-amber-100/80">{EVENT.hinweis}</p>
+            <p className="mt-2 inline-flex items-center gap-2 rounded-full bg-amber-300/15 px-4 py-2 text-sm font-semibold text-amber-100 ring-1 ring-amber-300/40">
+              <GeisselIcon />
+              {EVENT.geissel}
+            </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
@@ -118,7 +123,7 @@ function InfoTile({
         <dt className="text-[10px] font-bold uppercase tracking-[0.25em] text-amber-200/80">
           {label}
         </dt>
-        <dd className="truncate text-sm font-bold text-white">{value}</dd>
+        <dd className="text-sm font-bold leading-snug text-white">{value}</dd>
       </div>
     </div>
   );
@@ -254,6 +259,16 @@ function Tasse() {
         <path d="M120 210v30M105 225h30M110 214l20 22M130 214l-20 22" />
         <path d="M195 240v22M184 251h22M188 243l14 16M202 243l-14 16" />
       </g>
+    </svg>
+  );
+}
+
+function GeisselIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M4 20l5-5" />
+      <path d="M9 15c2-2 1-5 3-7s5-1 7-3" />
+      <path d="M19 5l1-1" />
     </svg>
   );
 }

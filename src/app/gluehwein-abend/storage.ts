@@ -7,9 +7,8 @@ import { createServiceRoleClient } from "@/lib/supabase/service-role";
 
 export type AnmeldungRow = {
   anzahl_personen: number;
-  bringt_gluehwein: boolean;
-  bringt_knabbereien: boolean;
-  bringt_alkoholfrei: boolean;
+  /** Schlüssel aus MITBRINGSEL, z.B. ["gluehwein", "kuchen"] */
+  mitbringsel: string[];
 };
 
 export type NeueAnmeldung = AnmeldungRow & {
@@ -19,8 +18,7 @@ export type NeueAnmeldung = AnmeldungRow & {
 
 export type Backend = "postgres" | "supabase" | null;
 
-const SELECT_COLUMNS =
-  "anzahl_personen, bringt_gluehwein, bringt_knabbereien, bringt_alkoholfrei";
+const SELECT_COLUMNS = "anzahl_personen, mitbringsel";
 
 function isSupabaseConfigured(): boolean {
   return Boolean(
@@ -61,16 +59,9 @@ export async function insertAnmeldung(row: NeueAnmeldung): Promise<void> {
   if (backend === "postgres") {
     await getPool().query(
       `insert into gluehwein_anmeldungen
-         (vorname, nachname, anzahl_personen, bringt_gluehwein, bringt_knabbereien, bringt_alkoholfrei)
-       values ($1, $2, $3, $4, $5, $6)`,
-      [
-        row.vorname,
-        row.nachname,
-        row.anzahl_personen,
-        row.bringt_gluehwein,
-        row.bringt_knabbereien,
-        row.bringt_alkoholfrei,
-      ],
+         (vorname, nachname, anzahl_personen, mitbringsel)
+       values ($1, $2, $3, $4)`,
+      [row.vorname, row.nachname, row.anzahl_personen, row.mitbringsel],
     );
     return;
   }
