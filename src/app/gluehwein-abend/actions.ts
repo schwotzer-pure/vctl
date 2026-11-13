@@ -55,9 +55,7 @@ export async function submitGluehweinAnmeldung(
       vorname,
       nachname,
       anzahl_personen: personen,
-      bringt_gluehwein: chosen.includes("gluehwein"),
-      bringt_knabbereien: chosen.includes("knabbereien"),
-      bringt_alkoholfrei: chosen.includes("alkoholfrei"),
+      mitbringsel: chosen,
     });
   } catch (error) {
     console.error("Glühwein: Insert fehlgeschlagen:", error);

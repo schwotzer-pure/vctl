@@ -66,9 +66,9 @@ export function GluehweinForm({ stats }: Props) {
           Ich bringe mit
         </legend>
         <p className="mt-1 text-xs text-muted">
-          Freiwillig. Damit es nicht nur Guetzli gibt, siehst du, was schon abgedeckt ist.
+          Freiwillig. Damit es nicht nur Lebkuchen gibt, siehst du, was schon abgedeckt ist.
         </p>
-        <div className="mt-4 space-y-3">
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {MITBRINGSEL.map((option) => (
             <OptionCard
               key={option.key}
@@ -115,7 +115,7 @@ function OptionCard({
         type="checkbox"
         className="mt-1 h-5 w-5 shrink-0 rounded border-slate-300 accent-brand-600"
       />
-      <span className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+      <span className="flex min-w-0 flex-1 flex-col gap-2">
         <span className="flex min-w-0 flex-1 flex-col gap-1">
           <span className="text-sm font-bold text-ink">{option.label}</span>
           <span className="text-xs text-muted">{option.hint}</span>
@@ -175,7 +175,7 @@ function Danke({ stats, chosen }: { stats: Stats; chosen: MitbringselKey[] }) {
               key={o.key}
               className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 ring-1 ring-brand-100"
             >
-              {o.label.replace(/^Ich nehme /, "").replace(/ mit$/, "")}
+              {o.label}
             </li>
           ))}
         </ul>
@@ -186,11 +186,7 @@ function Danke({ stats, chosen }: { stats: Stats; chosen: MitbringselKey[] }) {
         <StatTile label="Personen total" value={stats.personen} />
         <StatTile
           label="Mitbringsel"
-          value={
-            stats.mitbringsel.gluehwein +
-            stats.mitbringsel.knabbereien +
-            stats.mitbringsel.alkoholfrei
-          }
+          value={Object.values(stats.mitbringsel).reduce((a, b) => a + b, 0)}
         />
       </div>
       <p className="mt-4 text-xs text-muted">
