@@ -38,27 +38,21 @@ export function GluehweinForm({ stats }: Props) {
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <Field label="Vorname *" name="vorname" autoComplete="given-name" />
         <Field label="Name *" name="nachname" autoComplete="family-name" />
-        <div className="sm:col-span-2">
-          <label
-            htmlFor="personen"
-            className="text-xs font-bold uppercase tracking-wider text-ink"
-          >
-            Anzahl Personen *
-          </label>
-          <input
-            id="personen"
-            name="personen"
-            type="number"
-            inputMode="numeric"
-            min={1}
-            max={20}
-            step={1}
-            defaultValue={1}
-            required
-            className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
-          />
-          <p className="mt-1.5 text-xs text-muted">Dich selbst mitgezählt, Kinder ebenfalls.</p>
-        </div>
+        <NumberField
+          label="Anzahl Personen *"
+          name="personen"
+          min={1}
+          defaultValue={1}
+          required
+          hint="Dich selbst mitgezählt, Kinder ebenfalls."
+        />
+        <NumberField
+          label="Davon Kinder"
+          name="kinder"
+          min={0}
+          defaultValue={0}
+          hint="Wie viele der Personen sind Kinder?"
+        />
       </div>
 
       <fieldset className="mt-8">
@@ -181,9 +175,10 @@ function Danke({ stats, chosen }: { stats: Stats; chosen: MitbringselKey[] }) {
         </ul>
       )}
 
-      <div className="mt-8 grid gap-3 rounded-2xl bg-slate-50 p-4 text-left ring-1 ring-slate-200 sm:grid-cols-3">
+      <div className="mt-8 grid grid-cols-2 gap-3 rounded-2xl bg-slate-50 p-4 text-left ring-1 ring-slate-200 sm:grid-cols-4">
         <StatTile label="Anmeldungen" value={stats.anmeldungen} />
-        <StatTile label="Personen total" value={stats.personen} />
+        <StatTile label="Erwachsene" value={stats.personen - stats.kinder} />
+        <StatTile label="Kinder" value={stats.kinder} />
         <StatTile
           label="Mitbringsel"
           value={Object.values(stats.mitbringsel).reduce((a, b) => a + b, 0)}
@@ -201,6 +196,43 @@ function StatTile({ label, value }: { label: string; value: number }) {
     <div>
       <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-600">{label}</p>
       <p className="mt-1 text-2xl font-black tracking-tight text-ink">{value}</p>
+    </div>
+  );
+}
+
+function NumberField({
+  label,
+  name,
+  min,
+  defaultValue,
+  required,
+  hint,
+}: {
+  label: string;
+  name: string;
+  min: number;
+  defaultValue: number;
+  required?: boolean;
+  hint?: string;
+}) {
+  return (
+    <div>
+      <label htmlFor={name} className="text-xs font-bold uppercase tracking-wider text-ink">
+        {label}
+      </label>
+      <input
+        id={name}
+        name={name}
+        type="number"
+        inputMode="numeric"
+        min={min}
+        max={20}
+        step={1}
+        defaultValue={defaultValue}
+        required={required}
+        className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-ink outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"
+      />
+      {hint && <p className="mt-1.5 text-xs text-muted">{hint}</p>}
     </div>
   );
 }

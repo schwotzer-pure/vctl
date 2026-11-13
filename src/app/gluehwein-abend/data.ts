@@ -27,11 +27,13 @@ export async function loadStats(): Promise<Stats> {
   const stats: Stats = {
     anmeldungen: data.length,
     personen: 0,
+    kinder: 0,
     mitbringsel: emptyMitbringselCounts(),
   };
 
   for (const row of data) {
     stats.personen += row.anzahl_personen ?? 0;
+    stats.kinder += row.anzahl_kinder ?? 0;
     for (const key of new Set(row.mitbringsel ?? [])) {
       if (isMitbringselKey(key)) stats.mitbringsel[key] += 1;
     }

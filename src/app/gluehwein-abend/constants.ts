@@ -22,6 +22,8 @@ export type Stats = {
   anmeldungen: number;
   /** Summe der angemeldeten Personen */
   personen: number;
+  /** Davon Kinder (Erwachsene = personen - kinder) */
+  kinder: number;
   /** Wie viele Anmeldungen das jeweilige Mitbringsel gewählt haben */
   mitbringsel: Record<MitbringselKey, number>;
 };
@@ -36,5 +38,6 @@ export function emptyMitbringselCounts(): Record<MitbringselKey, number> {
 export const EMPTY_STATS: Stats = {
   anmeldungen: 0,
   personen: 0,
+  kinder: 0,
   mitbringsel: emptyMitbringselCounts(),
 };
