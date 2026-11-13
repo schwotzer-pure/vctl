@@ -23,6 +23,7 @@ export async function submitGluehweinAnmeldung(
   const vorname = (formData.get("vorname") as string | null)?.trim() ?? "";
   const nachname = (formData.get("nachname") as string | null)?.trim() ?? "";
   const personenRaw = (formData.get("personen") as string | null)?.trim() ?? "";
+  const kinderRaw = (formData.get("kinder") as string | null)?.trim() || "0";
 
   if (!vorname || !nachname) {
     return { error: "Bitte Vorname und Name ausfüllen." };
@@ -35,6 +36,16 @@ export async function submitGluehweinAnmeldung(
   if (!Number.isInteger(personen) || personen < 1 || personen > MAX_PERSONEN) {
     return {
       error: `Bitte eine Personenzahl zwischen 1 und ${MAX_PERSONEN} angeben.`,
+    };
+  }
+
+  const kinder = Number.parseInt(kinderRaw, 10);
+  if (!Number.isInteger(kinder) || kinder < 0) {
+    return { error: "Bitte bei Kinder eine Zahl ab 0 angeben." };
+  }
+  if (kinder > personen) {
+    return {
+      error: "Es können nicht mehr Kinder als Personen sein. Kinder sind in der Personenzahl enthalten.",
     };
   }
 
@@ -55,6 +66,7 @@ export async function submitGluehweinAnmeldung(
       vorname,
       nachname,
       anzahl_personen: personen,
+      anzahl_kinder: kinder,
       mitbringsel: chosen,
     });
   } catch (error) {

@@ -77,7 +77,7 @@ export default async function GluehweinAbendPage() {
                 <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_2px_rgba(52,211,153,0.7)]" />
                 {stats.personen === 0
                   ? "Noch keine Zusagen. Sei die erste!"
-                  : `Bereits ${stats.personen} ${stats.personen === 1 ? "Person" : "Personen"} dabei`}
+                  : `Bereits dabei: ${zaehle(stats.personen - stats.kinder, "Erwachsene", "Erwachsener")}, ${zaehle(stats.kinder, "Kinder", "Kind")}`}
               </span>
             </div>
           </div>
@@ -96,13 +96,17 @@ export default async function GluehweinAbendPage() {
         <div className="relative mx-auto max-w-2xl px-6 lg:px-10">
           <GluehweinForm stats={stats} />
           <p className="mt-6 text-center text-xs text-white/60">
-            Wir speichern nur Name und Personenzahl für die Planung. Die Zähler bei den
+            Wir speichern nur Name und Personenzahl, inklusive Kinder, für die Planung. Die Zähler bei den
             Mitbringseln sind anonym. Niemand sieht, wer was mitnimmt.
           </p>
         </div>
       </section>
     </>
   );
+}
+
+function zaehle(n: number, mehrzahl: string, einzahl: string) {
+  return `${n} ${n === 1 ? einzahl : mehrzahl}`;
 }
 
 function InfoTile({
